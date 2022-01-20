@@ -1,4 +1,4 @@
-![Faliactyl](https://canary.discord.com/channels/933803406513012807/933803827335925892/933818721573675008)
+![Faliactyl](https://cdn.discordapp.com/attachments/933803827335925892/933818721322008686/download_1.jpg)
 
 <hr>
 
@@ -83,4 +83,4 @@ proxy_redirect http://<IP> https://<DOMAIN>;
 ```
 <hr>
 
-![Faliactyl2](https://cdn.discordapp.com/attachments/932708720369094737/932710187754741770/unknown.png)
+![Faliactyl2](https://cdn.discordapp.com/attachments/933803827335925892/933818721322008686/download_1.jpg)
