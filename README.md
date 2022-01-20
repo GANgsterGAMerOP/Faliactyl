@@ -42,7 +42,7 @@ Warning: You need Pterodactyl already set up on a domain for Faliactyl to work
 2. Run `apt install nginx && apt install certbot` on the vps
 3. Run `ufw allow 80` and `ufw allow 443` on the vps
 4. Run `certbot certonly -d <Your Faliactyl Domain>` then do 1 and put your email
-5. Run `nano /etc/nginx/sites-enabled/heliactyl.conf`
+5. Run `nano /etc/nginx/sites-enabled/faliactyl.conf`
 6. Paste the configuration at the bottom of this and replace with the IP of the pterodactyl server including the port and with the domain you want your dashboard to be hosted on.
 7. Run `systemctl restart nginx` and try open your domain.
 # Nginx Proxy Config
