@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "defaulttheme": "BlackDashboard",
+  "defaulttheme": "Corona",
   "note": "Chose the theme you want for your Faliactyl Dashboard!, Default Themes: TinyDash, Argon, Corona, Black Dashboard",
   "note2": "To make a custom theme for Faliactyl, create a folder inside /themes/ and change the value above",
   "website": {
