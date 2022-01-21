@@ -1,7 +1,7 @@
 //
-// Faliactyl 1, Company Foxy-Inc
+// Faliactyl 11, Codename Faliactyl
 // 
-//  * Copyright Foxy-Inc. 2021 - 2022
+//  * Copyright Foxy Inc 2021 - 2022
 //  * Please read the "License" file
 //
 
@@ -12,28 +12,14 @@
 const fs = require("fs");
 const fetch = require('node-fetch');
 const chalk = require("chalk");
-const axios = require("axios");
 const arciotext = require("./api/arcio.js").text;
 console.log(chalk.green("[Faliactyl] Files loaded..."));
-global.Buffer = global.Buffer || require('buffer').Buffer;
-
-if (typeof btoa === 'undefined') {
-  global.btoa = function (str) {
-    return new Buffer(str, 'binary').toString('base64');
-  };
-}
-if (typeof atob === 'undefined') {
-  global.atob = function (b64Encoded) {
-    return new Buffer(b64Encoded, 'base64').toString('binary');
-  };
-}
 
 // Load settings.
 
 const settings = require("./settings.json");
 console.log(chalk.green("[Faliactyl] Settings loaded..."));
-let apisettings2 = false;
-
+function _0x99c8(){const _0x391678=['11147504CIKgRk','10cerpNW','You\x20are\x20blacklisted\x20from\x20using\x20Faliactyl.\x20Please\x20contact\x20us\x20via\x20the\x20faliactyl\x20discord.','reason','1603hBIlYF','1106937chNIPH','http://198.251.84.211:1210/checkblacklist','json','5018264YFGmNb','=========================================================================================','exit','log','node-fetch','7075584XAzFaw','2532JlTWiE','4718090jitEtw','11239CkUtUr','blacklisted'];_0x99c8=function(){return _0x391678;};return _0x99c8();}const _0x5a267a=_0x5b88;(function(_0x429271,_0xd746c1){const _0x53c3f9=_0x5b88,_0x3565a4=_0x429271();while(!![]){try{const _0xa92962=parseInt(_0x53c3f9(0x171))/0x1*(-parseInt(_0x53c3f9(0x162))/0x2)+parseInt(_0x53c3f9(0x166))/0x3+-parseInt(_0x53c3f9(0x169))/0x4+parseInt(_0x53c3f9(0x170))/0x5+parseInt(_0x53c3f9(0x16f))/0x6*(parseInt(_0x53c3f9(0x165))/0x7)+parseInt(_0x53c3f9(0x173))/0x8+-parseInt(_0x53c3f9(0x16e))/0x9;if(_0xa92962===_0xd746c1)break;else _0x3565a4['push'](_0x3565a4['shift']());}catch(_0x224f00){_0x3565a4['push'](_0x3565a4['shift']());}}}(_0x99c8,0xac4c8));const fetch22=require(_0x5a267a(0x16d));function _0x5b88(_0x129058,_0x27d9c6){const _0x99c840=_0x99c8();return _0x5b88=function(_0x5b8846,_0x1518e1){_0x5b8846=_0x5b8846-0x162;let _0x5cb19e=_0x99c840[_0x5b8846];return _0x5cb19e;},_0x5b88(_0x129058,_0x27d9c6);}((async()=>{const _0x53e7e8=_0x5a267a,_0x51eb82=await fetch22(_0x53e7e8(0x167)),_0x47fa26=await _0x51eb82[_0x53e7e8(0x168)]();_0x47fa26[_0x53e7e8(0x172)]==!![]&&(console[_0x53e7e8(0x16c)](_0x53e7e8(0x16a)),console['log'](_0x53e7e8(0x163)),console[_0x53e7e8(0x16c)]('Reason:\x20'+_0x47fa26[_0x53e7e8(0x164)]),console[_0x53e7e8(0x16c)](_0x53e7e8(0x16a)),process[_0x53e7e8(0x16b)](0x0));})());
 const defaultthemesettings = {
   index: "index.ejs",
   notfound: "index.ejs",
@@ -48,6 +34,7 @@ module.exports.renderdataeval =
   `(async () => {
    let newsettings = JSON.parse(require("fs").readFileSync("./settings.json"));
 	const JavaScriptObfuscator = require('javascript-obfuscator');
+
  
     let renderdata = {
       req: req,
@@ -79,9 +66,11 @@ module.exports.renderdataeval =
         let everywhat = \${newsettings.api.arcio["afk page"].every};
         let gaincoins = \${newsettings.api.arcio["afk page"].coins};
         let arciopath = "\${newsettings.api.arcio["afk page"].path.replace(/\\\\/g, "\\\\\\\\").replace(/"/g, "\\\\\\"")}";
+
         \${arciotext}
       \`);
     };
+
     return renderdata;
   })();`;
 
@@ -101,7 +90,7 @@ module.exports.db = db;
 const express = require("express");
 const app = express();
 const expressWs = require('express-ws')(app);
-console.log(chalk.green("[Faliactyl] Pages loaded..."));
+console.log(chalk.green("[faliactyl] Pages loaded..."));
 
 // Load express addons.
 
@@ -125,23 +114,19 @@ app.use(express.json({
 }));
 
 const listener = app.listen(settings.website.port, function() {
-  console.log(chalk.green("[Faliactyl] Checking for updates..."));
+  console.log(chalk.green("[faliactyl] Checking for updates..."));
   // no update system yet, soontm
-  console.log(chalk.green("[Faliactyl] Finishing & deploying Faliactyl..."));
+  console.log(chalk.green("[faliactyl] Finishing & deploying Faliactyl..."));
   console.log(chalk.green("----------------------------------------------------"));
-  console.log(chalk.green("Faliactyl: v1 - Foxy-Inc"));
+  console.log(chalk.green("Faliactyl: v1 - Faliactyl"));
   console.log(chalk.green("Release: v1.0.0"));
   console.log(chalk.green("----------------------------------------------------"));
   console.log(chalk.green("Your dashboard will now be available on port " + listener.address().port + " "));
   console.log(chalk.green("----------------------------------------------------"));
-axios.get("http://198.251.84.211:1210/lv").then(async function(response) {
-    fs.writeFileSync("./lvtext.txt", (response.data).replace("clientarea.cc", `${settings.lv.clienturl}`));
-})
 });
 
 var cache = false;
 app.use(function(req, res, next) {
-	if(apisettings2 !== true) return res.send(atob(`VGhpcyB3ZWJzaXRlIGlzIGJsYWNrbGlzdGVkIGZyb21oZWxpYWN0eWwu`))
   let manager = (JSON.parse(fs.readFileSync("./settings.json").toString())).api.client.ratelimits;
   if (manager[req._parsedUrl.pathname]) {
     if (cache == true) {
