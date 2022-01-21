@@ -10,15 +10,24 @@
   },
   "pterodactyl": {
     "domain": "Pterodactyl URL",
-    "note": "Don't put a / in the domain, only put for example https://panel.faliactyl.xyz or server link wont work",
+    "note": "Don't put a / in the domain, only put for example https://panel.faliactyl.net or server link wont work",
     "key": "Pterodactyl API Key"
   },
   "limits": {
-    "note": "Unsupported, go to /api/store.js and edit the values there"
+    "note": "This allows you to control the maximum amount of resources anyone can buy from the resources store.",
+    "ram":1024,
+    "cpu":200,
+    "servers":4,
+    "disk":5120
   },
   "ads": {
-    "enabled": true,
+    "enabled": false,
     "note": "This allows you to put adsense, adsterra, etc easily into Faliactyl. Please check /themes/YourFaliactylTheme/components/ads.ejs"
+  },
+  "lv": {
+    "note":"This is linkvertise earning, make account at https://publisher.linkvertise.com and then go to full script api and put user ID below, clienturl is like client.spermnodes.xyz or whatever it is",
+    "userid":0,
+    "clienturl":"client.faliactyl.net"
   },
   "database": "sqlite://database.sqlite",
   "api": {
@@ -30,7 +39,6 @@
        "j4r": {
          "enabled": true,
          "servers": ["ServerGuildID", "ServerGuildID"],
-         "note": "The Discord bot must be in these servers and have invite permissions.",
          "every": {
              "cpu": 10,
              "ram": 512,
@@ -41,7 +49,7 @@
              {
              	"name": "Example server",
                 "invite": "https://discord.gg/Tz2bkhk5Pn",
-                "note": "Custom Ads for Faliactyl"
+                "note": "The Discord bot must be in these servers and have invite permissions."
          	 },
              {
                  "name": "Example server",
@@ -54,7 +62,7 @@
          "joinguild": {
            "_comment": "The Discord bot must be in these servers and have invite permissions.",
            "enabled": true,
-           "guildid": ["example"]
+           "guildid": ["ServerGuildID"]
         }
       },
       "passwordgenerator": {

@@ -60,7 +60,7 @@
                       <div class="form-group">
               <p id="latestversion"><span>Fetching...</span></p>
                                     <script>
-                                        fetch("https://faliactyl.github.io/faliactyl/")
+                                        fetch("https://github.com/Faliactyl/Faliactyl")
                                             .then(res => Promise.resolve(res.json()).then(ver => {
                                                 let currentver = "<%= settings.version.replace(/"/g, `\\\\"`) %>";
                                                 if (ver.version == currentver) {

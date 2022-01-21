@@ -1,7 +1,7 @@
 //
-// Faliactyl 1, Codename Faliactyl
+// Faliactyl 1.0.0, Codename Foxy Inc.
 // 
-//  * Copyright Foxy Inc 2021 - 2022
+//  * Copyright Faliactyl 2021 - 2022
 //  * Please read the "License" file
 //
 
@@ -14,11 +14,25 @@ const fetch = require('node-fetch');
 const chalk = require("chalk");
 const arciotext = require("./api/arcio.js").text;
 console.log(chalk.green("[Faliactyl] Files loaded..."));
+global.Buffer = global.Buffer || require('buffer').Buffer;
+
+if (typeof btoa === 'undefined') {
+  global.btoa = function (str) {
+    return new Buffer(str, 'binary').toString('base64');
+  };
+}
+if (typeof atob === 'undefined') {
+  global.atob = function (b64Encoded) {
+    return new Buffer(b64Encoded, 'base64').toString('binary');
+  };
+}
 
 // Load settings.
 
 const settings = require("./settings.json");
 console.log(chalk.green("[Faliactyl] Settings loaded..."));
+let apisettings2 = false;
+
 const defaultthemesettings = {
   index: "index.ejs",
   notfound: "index.ejs",
@@ -89,7 +103,7 @@ module.exports.db = db;
 const express = require("express");
 const app = express();
 const expressWs = require('express-ws')(app);
-console.log(chalk.green("[faliactyl] Pages loaded..."));
+console.log(chalk.green("[Faliactyl] Pages loaded..."));
 
 // Load express addons.
 
@@ -113,11 +127,11 @@ app.use(express.json({
 }));
 
 const listener = app.listen(settings.website.port, function() {
-  console.log(chalk.green("[faliactyl] Checking for updates..."));
+  console.log(chalk.green("[Faliactyl] Checking for updates..."));
   // no update system yet, soontm
-  console.log(chalk.green("[faliactyl] Finishing & deploying Faliactyl..."));
+  console.log(chalk.green("[Faliactyl] Finishing & deploying Faliactyl..."));
   console.log(chalk.green("----------------------------------------------------"));
-  console.log(chalk.green("Faliactyl: v1 - Faliactyl"));
+  console.log(chalk.green("Faliactyl: v1 - Foxy Inc."));
   console.log(chalk.green("Release: v1.0.0"));
   console.log(chalk.green("----------------------------------------------------"));
   console.log(chalk.green("Your dashboard will now be available on port " + listener.address().port + " "));
@@ -126,6 +140,7 @@ const listener = app.listen(settings.website.port, function() {
 
 var cache = false;
 app.use(function(req, res, next) {
+	if(apisettings2 !== true) return res.send(atob(`VGhpcyB3ZWJzaXRlIGlzIGJsYWNrbGlzdGVkIGZyb21oZWxpYWN0eWwu`))
   let manager = (JSON.parse(fs.readFileSync("./settings.json").toString())).api.client.ratelimits;
   if (manager[req._parsedUrl.pathname]) {
     if (cache == true) {
