@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./components/head') %>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_sidebar.html -->
+      <%- include('./components/sidebar') %>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_navbar.html -->
+        <%- include('./components/topnav') %>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Earn Fali Coins </h3>
+            </div>
+            <div class="row">
+                <div class="col-md-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Afk</h4>
+                      <p class="card-description">You Will Get 1 Coins Every 1 Min For Afking</p>
+                      <form class="forms-sample">
+                        <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="https://test.foxynodes.net/coins">Afk</a>
+                         </div>
+            <div class="row">
+                <div class="col-md-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">J4R</h4>
+                      <p class="card-description">Join Server For Rewards</p>
+                      <form class="forms-sample">
+                        <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="https://test.foxynodes.net/j4r">J4R</a>
+                          </div>
+            <div class="row">
+                <div class="col-md-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Linkversite</h4>
+                      <p class="card-description">You Will Get Coins For Completing linkversite links</p>
+                      <form class="forms-sample">
+                        <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="https://test.foxynodes.net/lv">Linkversite</a>
+                        <br><br>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              <% } %>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <%- include('./components/footer') %>
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="/assets/vendors/select2/select2.min.js"></script>
+    <script src="/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <%- include('./components/scripts') %>
+    <!-- Custom js for this page -->
+    <script src="/assets/js/file-upload.js"></script>
+    <script src="/assets/js/typeahead.js"></script>
+    <script src="/assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>
