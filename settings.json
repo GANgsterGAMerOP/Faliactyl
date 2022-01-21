@@ -24,11 +24,6 @@
     "enabled": false,
     "note": "This allows you to put adsense, adsterra, etc easily into Faliactyl. Please check /themes/YourFaliactylTheme/components/ads.ejs"
   },
-  "lv": {
-    "note":"This is linkvertise earning, make account at https://publisher.linkvertise.com and then go to full script api and put user ID below, clienturl is like client.spermnodes.xyz or whatever it is",
-    "userid":0,
-    "clienturl":"client.faliactyl.net"
-  },
   "database": "sqlite://database.sqlite",
   "api": {
     "client": {
