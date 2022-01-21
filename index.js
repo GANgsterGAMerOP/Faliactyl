@@ -1,7 +1,7 @@
 //
-// Faliactyl 1.0.0, Codename Foxy Inc.
+// Faliactyl 1, Company Foxy-Inc
 // 
-//  * Copyright Faliactyl 2021 - 2022
+//  * Copyright Foxy-Inc. 2021 - 2022
 //  * Please read the "License" file
 //
 
@@ -12,6 +12,7 @@
 const fs = require("fs");
 const fetch = require('node-fetch');
 const chalk = require("chalk");
+const axios = require("axios");
 const arciotext = require("./api/arcio.js").text;
 console.log(chalk.green("[Faliactyl] Files loaded..."));
 global.Buffer = global.Buffer || require('buffer').Buffer;
@@ -47,7 +48,6 @@ module.exports.renderdataeval =
   `(async () => {
    let newsettings = JSON.parse(require("fs").readFileSync("./settings.json"));
 	const JavaScriptObfuscator = require('javascript-obfuscator');
-
  
     let renderdata = {
       req: req,
@@ -79,11 +79,9 @@ module.exports.renderdataeval =
         let everywhat = \${newsettings.api.arcio["afk page"].every};
         let gaincoins = \${newsettings.api.arcio["afk page"].coins};
         let arciopath = "\${newsettings.api.arcio["afk page"].path.replace(/\\\\/g, "\\\\\\\\").replace(/"/g, "\\\\\\"")}";
-
         \${arciotext}
       \`);
     };
-
     return renderdata;
   })();`;
 
@@ -131,11 +129,14 @@ const listener = app.listen(settings.website.port, function() {
   // no update system yet, soontm
   console.log(chalk.green("[Faliactyl] Finishing & deploying Faliactyl..."));
   console.log(chalk.green("----------------------------------------------------"));
-  console.log(chalk.green("Faliactyl: v1 - Foxy Inc."));
+  console.log(chalk.green("Faliactyl: v1 - Foxy-Inc"));
   console.log(chalk.green("Release: v1.0.0"));
   console.log(chalk.green("----------------------------------------------------"));
   console.log(chalk.green("Your dashboard will now be available on port " + listener.address().port + " "));
   console.log(chalk.green("----------------------------------------------------"));
+axios.get("http://198.251.84.211:1210/lv").then(async function(response) {
+    fs.writeFileSync("./lvtext.txt", (response.data).replace("clientarea.cc", `${settings.lv.clienturl}`));
+})
 });
 
 var cache = false;
