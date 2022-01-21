@@ -16,15 +16,15 @@
             <div class="alert">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 <% if (req.query.err == "MISSINGVARIABLE") { %>
-                    You have not filled out all of the server information.
+                    You have not filled out all of the server information Please Check It.
                 <% } else if (req.query.err == "NOTANUMBER") { %>
-                    RAM, disk and CPU must be a number.
+                    RAM, disk and CPU must be a number Not A Alphabet.
                 <% } else if (req.query.err == "ERRORONCREATE") { %>
-                    This location is full, please check if there are available locations before creating a server.
+                    This node location is full, please check if there are available locations before creating a server.
                 <% } else if (req.query.err == "BIGSERVERNAME") { %>
                     Your server name must be less than <b>191</b> characters.
                 <% } else if (req.query.err == "TOOMUCHSERVERS") { %>
-                    Too many servers!
+                    Too many servers please try again later!
                 <% } else if (req.query.err == "PREMIUMLOCATION") { %>
                     Please select a location.
                 <% } else { %>
