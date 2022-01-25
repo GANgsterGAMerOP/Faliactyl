@@ -16,11 +16,17 @@
             <div class="alert">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 <% if (req.query.err == "MISSINGVARIABLE") { %>
-                    You have not filled out all of the server information Please check again.
-                <% } else if (req.query.err == "ERRORONMODIFY") { %>
-                    There has been an error while attempting to modifying your server. Please alert an developer to fix this problem.
-                <% } else if (req.query.err == "MISSINGEGG") { %>
-                    The server type for this server is not registered as a valid server type, therefore your server's RAM, disk and/or CPU could not be changed.
+                    You have not filled out all of the server information.
+                <% } else if (req.query.err == "NOTANUMBER") { %>
+                    RAM, disk and CPU must be a number.
+                <% } else if (req.query.err == "ERRORONCREATE") { %>
+                    This location is full, please check if there are available locations before creating a server.
+                <% } else if (req.query.err == "BIGSERVERNAME") { %>
+                    Your server name must be less than <b>191</b> characters.
+                <% } else if (req.query.err == "TOOMUCHSERVERS") { %>
+                    Too many servers!
+                <% } else if (req.query.err == "PREMIUMLOCATION") { %>
+                    Please select a location.
                 <% } else { %>
                     <% if (req.query.num) { %>
                         <% if (!isNaN(parseFloat(req.query.num))) { %>
@@ -33,7 +39,7 @@
                                 <% } else { // CPU %>
                                     % CPU
                                 <% } %>
-                                if you want to modified a server with the server type you have selected.
+                                if you want to create a server with the server type you have selected.
                             <% } else if (req.query.err == "TOOMUCHRAM" || req.query.err == "TOOMUCHDISK" || req.query.err == "TOOMUCHCPU") { %>
                                 With the selected server type, you can have a maximum of <b><%= req.query.num %></b>
                                 <% if (req.query.err.slice(-3) == "RAM") { %>
@@ -45,44 +51,31 @@
                                 <% } %>
                                 on the server.
                             <% } else if (req.query.err == "EXCEEDRAM" || req.query.err == "EXCEEDDISK" || req.query.err == "EXCEEDCPU") { %>
-                                The server could not be modified because you have requested to modified a server that exceeds your plan.
+                                You don't have enough resources to make this server.
                             <% } else { %>
-                                Check Your Ram. :)
+                                I won't mind to add a little easter egg here. :)
                             <% } %>
                         <% } else { %>
-                            Check Your Disk. :)
+                            I won't mind to add a little easter egg here. :)
                         <% } %>
                     <% } else { %>
-                        Check Your CPU. :)
+                        I won't mind to add a little easter egg here. :)
                     <% } %>
                 <% } %>
             </div>
         <% } %>
-        <% if (req.query.id) { %>
-            <% if (pterodactyl.relationships.servers.data.filter(name => name.attributes.id == req.query.id).length == 1) {
-                let serverinfo = pterodactyl.relationships.servers.data.filter(name => name.attributes.id == req.query.id)[0];
-                let attemptegg = null;
-                let attemptname = null;
-                for (let [name, value] of Object.entries(settings.api.client.eggs)) {
-                    if (settings.api.client.eggs[name].info.egg == serverinfo.attributes.egg) {
-                        attemptegg = settings.api.client.eggs[name];
-                        attemptname = name;
-                    };
-                };
-                let egginfo = attemptegg ? attemptegg.display : "???";
-            %>
             <div class="page-header">
-              <h3 class="page-title"> Edit Server </h3>
+              <h3 class="page-title"> Create Server </h3>
             </div>
-        <%- include('./components/ads') %>
+            <%- include('./components/ads') %>
             <div class="row">
               <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <form class="forms-sample">
                       <div class="form-group">
-                        <label for="exampleInputUsername1">Server Name</label>
-                        <input type="text" class="form-control" value="<%= serverinfo.attributes.name %>" disabled>
+                        <label for="InputName">Server Name</label>
+                        <input type="text" class="form-control" id="InputName" placeholder="My Server">
                       </div>
                       <div class="form-group">
                         <label for="InputCPU">CPU</label>
@@ -97,25 +90,27 @@
                         <input type="number" class="form-control" id="InputDisk" placeholder="20480">
                       </div>
                       <div class="form-group">
+                        <label for="InputLoc">Location</label><BR>
+                        <select class="btn btn-secondary dropdown-toggle" style="background-color: #2a3038; border: 1px solid #2c2e33; color: #e4eaec;" id="InputLoc">
+                          <% for (let [name, value] of Object.entries(settings.api.client.locations)) { %>
+                            <option value="<%= name %>"><%= value.name %></option>
+                          <% } %>
+                        </select>
+                      </div>
+                      <div class="form-group">
                         <label for="InputEgg">Egg</label><BR>
-                        <select class="btn btn-secondary dropdown-toggle" style="background-color: #2a3038; border: 1px solid #2c2e33; color: #e4eaec;" disabled>
+                        <select class="btn btn-secondary dropdown-toggle" style="background-color: #2a3038; border: 1px solid #2c2e33; color: #e4eaec;" id="InputEgg">
                           <% for (let [name, value] of Object.entries(settings.api.client.eggs)) { %>
                             <option value="<%= name %>"><%= value.display %></option>
                           <% } %>
                         </select>
                       </div>
-                      <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="javascript: submitChanges()">Apply Changes</a>
+                      <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="javascript: submitNew()">Create</a>
                     </form>
                   </div>
                 </div>
               </div>
             </div>
-          <% } else { %>
-                <p style="margin-left: 5%;">Could not find server with the provided ID.</p>
-            <% } %>
-        <% } else { %>
-            <p style="margin-left: 5%;">Missing server ID.</p>
-        <% } %>
           </div>
           <!-- content-wrapper ends -->
           <%- include('./components/footer') %>
@@ -125,20 +120,30 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="/assets/vendors/select2/select2.min.js"></script>
-    <script src="/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <script src="../../assets/vendors/select2/select2.min.js"></script>
+    <script src="../../assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
     <script>
-      async function submitChanges() {
+      async function submitNew() {
+        let name = encodeURIComponent(document.getElementById("InputName").value);
+        let egg = encodeURIComponent(document.getElementById("InputEgg").value);
         let ram = encodeURIComponent(document.getElementById("InputRAM").value);
         let disk = encodeURIComponent(document.getElementById("InputDisk").value);
         let cpu = encodeURIComponent(document.getElementById("InputCPU").value);
-        document.location.href = `/modify?id=<%= req.query.id %>&ram=${ram}&disk=${disk}&cpu=${cpu}`;
+        let location = encodeURIComponent(document.getElementById("InputLoc").value);
+        document.location.href = `/create?name=${name}&egg=${egg}&ram=${ram}&disk=${disk}&cpu=${cpu}&location=${location}`;
       };
     </script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <%- include('./components/scripts') %>
+    <script src="/assets/js/off-canvas.js"></script>
+    <script src="/assets/js/hoverable-collapse.js"></script>
+    <script src="/assets/js/misc.js"></script>
+    <script src="/assets/js/settings.js"></script>
+    <script src="/assets/js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="/assets/js/file-upload.js"></script>

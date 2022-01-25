@@ -53,6 +53,7 @@
         "store": "store.ejs",
         "privacy-policy": "privacy-policy.ejs",
         "terms-of-service": "terms-of-service.ejs",
+        "lv": "lv.ejs"
     },
     "mustbeloggedin": [
         "/dashboard",
@@ -63,6 +64,7 @@
         "/gift",
         "/store",
         "/coins",
+        "/lv"
     ],
     "mustbeadmin": [
         "/admin"
@@ -71,8 +73,8 @@
         "footerad": true,
         "faviconlink": "Set a favicon here",
         "home": {
-            "title": "Faliactyl",
-            "name": "Faliactyl",
+            "title": "Heliactyl",
+            "name": "Heliactyl",
             "buttontext": {
                 "loggedin": {
                     "text": "Back to Dashboard",

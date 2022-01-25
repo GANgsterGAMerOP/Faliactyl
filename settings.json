@@ -1,16 +1,19 @@
 {
-  "version": "1.0.0",
-  "defaulttheme": "Corona",
-  "note": "Chose the theme you want for your Faliactyl Dashboard!, Default Themes: TinyDash, Argon, Corona, Black Dashboard",
-  "note2": "To make a custom theme for Faliactyl, create a folder inside /themes/ and change the value above",
+  "version": "11.3.1",
+  "defaulttheme": "default",
+  "note": "To make a custom theme for Heliactyl, create a folder inside /themes/ and change the value above",
   "website": {
     "port": 80,
-    "warning": "To run Faliactyl on a domain, you need to setup a reverse proxy, the guide is on our GitHub",
+    "warning": "To run Heliactyl on a domain, you need to setup a reverse proxy, the guide is on our GitHub",
     "secret": "Example Secret"
+  },
+  "guildblacklist": {
+     "note":"Stop users using your host if they are in a certain discord server",
+    "guilds":[]
   },
   "pterodactyl": {
     "domain": "Pterodactyl URL",
-    "note": "Don't put a / in the domain, only put for example https://panel.faliactyl.net or server link wont work",
+    "note": "Don't put a / in the domain, only put for example https://panel.heliactyl.xyz or server link wont work",
     "key": "Pterodactyl API Key"
   },
   "limits": {
@@ -22,18 +25,23 @@
   },
   "ads": {
     "enabled": false,
-    "note": "This allows you to put adsense, adsterra, etc easily into Faliactyl. Please check /themes/YourFaliactylTheme/components/ads.ejs"
+    "note": "This allows you to put adsense, adsterra, etc easily into Heliactyl. Please check /themes/default/components/ads.ejs"
+  },
+  "lv": {
+    "note":"This is linkvertise earning, make account at https://publisher.linkvertise.com and then go to full script api and put user ID below, clienturl is like client.spermnodes.xyz or whatever it is",
+    "userid":0,
+    "clienturl":"client.google.com"
   },
   "database": "sqlite://database.sqlite",
   "api": {
     "client": {
        "api": {
-         "enabled": true,
+         "enabled": false,
          "code": "Example API Code"
        },
        "j4r": {
          "enabled": true,
-         "servers": ["ServerGuildID", "ServerGuildID"],
+         "servers": ["example", "example"],
          "every": {
              "cpu": 10,
              "ram": 512,
@@ -43,8 +51,7 @@
          "ads": [
              {
              	"name": "Example server",
-                "invite": "https://discord.gg/Tz2bkhk5Pn",
-                "note": "The Discord bot must be in these servers and have invite permissions."
+                "invite": "https://discord.gg/Tz2bkhk5Pn"
          	 },
              {
                  "name": "Example server",
@@ -57,7 +64,7 @@
          "joinguild": {
            "_comment": "The Discord bot must be in these servers and have invite permissions.",
            "enabled": true,
-           "guildid": ["ServerGuildID"]
+           "guildid": ["example"]
         }
       },
       "passwordgenerator": {
@@ -212,12 +219,12 @@
     },
     "arcio": {	
       "_comment": "You can make an arc.io widget on https://arc.io. You can get money using arc.io.",	
-      "enabled": false,	
+      "enabled": true,	
       "widgetid": "Arc Widget ID",	
       "afk page": {	
         "_comment": "This will not effect any current arc.io sessions, and will require a restart to kick everyone out of the websocket sesison.",	
         "_comment2": "Make sure coins are enabled if you choose to enable this option!",	
-        "enabled": false,	
+        "enabled": true,	
         "_comment3": "If you change the path, you need to restart for it to take full effect.",	
         "path": "afkwspath",	
         "_comment4": "This afk page will give the users [coins variable] coins every [every variable] seconds.",	

@@ -13,35 +13,20 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Earn Fali Coins </h3>
+              <h3 class="page-title"> Join for resources </h3>
             </div>
+        <%- include('./components/ads') %>
             <div class="row">
+              <% for (let i = 0, len = settings.api.client.j4r.ads.length; i < len; i++) { %>
                 <div class="col-md-6 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Afk</h4>
-                      <p class="card-description">You Will Get 1 Coins Every 1 Min For Afking</p>
+                      <h4 class="card-title"><%= settings.api.client.j4r.ads[i].name %></h4>
+                      <p class="card-description"> Join this server to receive: <br> <%= settings.api.client.j4r.every.cpu %>% CPU, <%= settings.api.client.j4r.every.ram %>MB RAM & <%= settings.api.client.j4r.every.disk / 1024 %>GB Disk </p>
                       <form class="forms-sample">
-                        <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="https://test.foxynodes.net/coins">Afk</a>
-                         </div>
-            <div class="row">
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-title">J4R</h4>
-                      <p class="card-description">Join Server For Rewards</p>
-                      <form class="forms-sample">
-                        <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="https://test.foxynodes.net/j4r">J4R</a>
-                          </div>
-            <div class="row">
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-title">Linkversite</h4>
-                      <p class="card-description">You Will Get Coins For Completing linkversite links</p>
-                      <form class="forms-sample">
-                        <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="https://test.foxynodes.net/lv">Linkversite</a>
+                        <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="<%= settings.api.client.j4r.ads[i].invite %>">Join Server</a>
                         <br><br>
+                        <p>Heliactyl needs to check if you actually joined the server so you'll have to logout and login again, <a style="color: #009425" href="../logout">click here</a> to logout</p>
                       </form>
                     </div>
                   </div>

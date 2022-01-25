@@ -13,23 +13,19 @@
           <div class="main-panel">
             <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Earn Fali Coins </h3>
+              <h3 class="page-title"> Linkvertise Earning </h3>
             </div>
             <%- include('./components/ads') %>
               <div class="row">
                 <div class="col-md-12 grid-margin stretch-card">
                                     <div class="card">
                     <div class="card-body">
-                                  <p> By being on this page, you are supporting the service stay up & running while also earning coins </p>
-                                  <p>Every <% if (settings.api.arcio["afk page"].every !== 1) { %><%= settings.api.arcio["afk page"].every %> seconds<% } else { %>second<% } %>, you will get <%= settings.api.arcio["afk page"].coins == 1 ? "a" : settings.api.arcio["afk page"].coins %> coin<%= settings.api.arcio["afk page"].coins == 1 ? "" : "s" %>.</p>
-                <p>You will gain coins again in <span id="arciotimer"><%= settings.api.arcio["afk page"].every %></span> seconds</p>
-                       <p>You have gained <span id="arciogainedcoins">0</span> coins this AFK session</p>
-<br>
-<p>Earning Status: <br><button type="button" class="btn btn-success btn-rounded btn-icon"><i class="mdi mdi-check"></i></button>
-                  <script>
-                <%- arcioafktext %>
-            </script>
-          </div>
+										<% if(req.query.s == "done") { %>
+										<p>Success! The configured amount of coins were added to your account.<br>Want to complete another? press the button below!<br><br><button class="btn btn-primary" href="/lv/gen" onclick="window.location.href = '/lv/gen'">Generate Link</button></p>
+										<% } else { %>
+										<p>Every Linkvertise link completed, you gain an amount coins!<br>Generate a link by pressing the button below:<br><br><button class="btn btn-primary" href="/lv/gen" onclick="window.location.href = '/lv/gen'">Generate Link</button></p>
+										<% } %>
+									</div>
               </div>
             </div>
             <!-- content-wrapper ends -->
