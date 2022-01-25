@@ -17,15 +17,15 @@
                 <div class="alert">
                   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                   <% if (req.query.err == "CANNOTAFFORD") { %>
-                    Insufficient funds.
+                    Insufficient Fali Coins.
                   <% } else if (req.query.err == "MAXCPUEXCEETED") { %>
-                    You have reached the cpu limit!
+                    You have Used the cpu limit!
                   <% } else if (req.query.err == "MAXRAMEXCEETED") { %>
-                    You have reached the RAM limit!
+                    You have Used the RAM limit!
                   <% } else if (req.query.err == "MAXDISKEXCEETED") { %>
-                    You have reached the disk limit!
+                    You have Used the disk limit!
                   <% } else if (req.query.err == "MAXSERVERSEXCEETED") { %>
-                    You have reached the servers limit!
+                    You have Used the servers limit!
                   <% } %>
                 </div>
               <% } else if (req.query.err == "none") { %>
