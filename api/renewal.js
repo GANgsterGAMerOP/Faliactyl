@@ -15,7 +15,9 @@ module.exports.load = async function(app, db) {
                 renewalservers[id]--;
                 if (renewalservers[id] < 1) {
                     let canpass = await indexjs.islimited();
-                    if (canpass == false) return;
+                    if (canpass == false) {
+                        return renewalservers[id] = 0;
+                    };
                     indexjs.ratelimits(1);
                     await fetch(
                         settings.pterodactyl.domain + "/api/application/servers/" + id + "/suspend",
@@ -44,7 +46,7 @@ module.exports.load = async function(app, db) {
                 let discordid = req.session.userinfo.id;
         
                 let packagename = await db.get("package-" + discordid);
-                let package = newsettings.api.client.packages.list[packagename ? packagename : newsettings.api.client.packages.default];
+                let package = newsettings.api.client.packages.list[packagename || newsettings.api.client.packages.default];
         
                 let extra = 
                     await db.get("extra-" + discordid) ?
@@ -76,9 +78,23 @@ module.exports.load = async function(app, db) {
                 };
 
                 if (current.ram > plan.ram || current.disk > plan.disk || current.cpu > plan.cpu || current.servers > plan.servers) {
-                    return res.send("You could not renew this server, because your servers are exceeding your plan.");
+                    return res.send(theme.settings.redirect.failedrenewserver + "?err=EXCEEDSPLAN");
                 };
             };
+
+            let cost = settings.api.client.allow.renewsuspendsystem.cost;
+
+            let usercoins = await db.get("coins-" + req.session.userinfo.id) || 0;
+
+            if (usercoins < cost) return res.redirect(theme.settings.redirect.failedrenewserver + "?err=CANNOTAFFORD");
+
+            let newusercoins = usercoins - cost;
+
+            if (newusercoins == 0) {
+                await db.delete("coins-" + req.session.userinfo.id);
+            } else {
+                await db.set("coins-" + req.session.userinfo.id, newusercoins);
+            }
 
             
             renewalservers[req.query.id] = settings.api.client.allow.renewsuspendsystem.time;
@@ -91,7 +107,7 @@ module.exports.load = async function(app, db) {
                 }
             );
         
-            return res.redirect(theme.settings.redirect.renewserver ? theme.settings.redirect.renewserver : "/");
+            return res.redirect(theme.settings.redirect.renewserver || "/");
         });
 
         module.exports.set = async function(id) {

@@ -1,9 +1,9 @@
 {
-  "name": "Heliactyl",
-  "version": "11.0",
-  "description": "The best Pterodactyl Panel dashboard addition.",
+  "name": "FoxyNodes",
+  "version": "2.0.0",
+  "description": "The best Host Ever!",
   "main": "index.js",
-  "author": "Heliactyl-tm",
+  "author": "FoxyNodes-tm",
   "dependencies": {
     "@keyv/mongo": "^1.2.1",
     "@keyv/mysql": "^1.1.5",
@@ -21,10 +21,9 @@
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.6",
     "nodemon": "^2.0.15",
-    "warn": "^1.0.1",
-    "axios":"^0.25.0"
+    "warn": "^1.0.1"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   }
 }

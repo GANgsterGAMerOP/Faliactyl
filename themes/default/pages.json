@@ -19,7 +19,7 @@
         "failedsetresources": "/admin",
         "giftresources": "/gift",
         "failedgiftresources": "/gift",
-        "renewserver": "/dashboard",	
+        "renewserver": "/servers",	
         "setcoins": "/admin",	
         "failedsetcoins": "/admin",	
         "purchaseram": "/store",	
@@ -48,33 +48,31 @@
         "redeem": "redeem.ejs",
         "settings": "settings.ejs",
         "gift": "gift.ejs",
-        "j4r": "j4r.ejs",
+        "join-for-rewards": "join-for-rewards.ejs",
         "coins": "coins.ejs",
         "store": "store.ejs",
         "privacy-policy": "privacy-policy.ejs",
-        "terms-of-service": "terms-of-service.ejs",
-        "lv": "lv.ejs"
+        "terms-of-service": "terms-of-service.ejs"
     },
     "mustbeloggedin": [
         "/dashboard",
         "/servers/new",
         "/servers/edit",
         "/settings",
-        "/j4r",
+        "/join-for-rewards",
         "/gift",
         "/store",
-        "/coins",
-        "/lv"
+        "/coins"
     ],
     "mustbeadmin": [
         "/admin"
     ],
     "variables": {
         "footerad": true,
-        "faviconlink": "Set a favicon here",
+        "faviconlink": "https://i.imgur.com/Bz2hWKW.png",
         "home": {
-            "title": "Heliactyl",
-            "name": "Heliactyl",
+            "title": "FoxyNodes",
+            "name": "FoxyNodes",
             "buttontext": {
                 "loggedin": {
                     "text": "Back to Dashboard",

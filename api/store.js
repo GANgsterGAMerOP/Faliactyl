@@ -3,17 +3,13 @@ const arciotext = (require("./arcio.js")).text;
 const adminjs = require("./admin.js");
 const fs = require("fs");
 const ejs = require("ejs");
-let somegayshit = require('../settings.json')
+
 module.exports.load = async function(app, db) {
-  let maxram = somegayshit.limits.ram;
-  let maxcpu = somegayshit.limits.cpu;
-  let maxservers = somegayshit.limits.servers;
-  let maxdisk = somegayshit.limits.disk;
   app.get("/buyram", async (req, res) => {
     let newsettings = await enabledCheck(req, res);
     if (newsettings) {
       let amount = req.query.amount;
-      
+
       if (!amount) return res.send("missing amount");
 
       amount = parseFloat(amount);
@@ -40,7 +36,7 @@ module.exports.load = async function(app, db) {
 
       let newusercoins = usercoins - cost;
       let newram = ramcap + amount;
-      if(newram > maxram) return res.send("You reached max ram limit!");
+
       if (newusercoins == 0) {
         await db.delete("coins-" + req.session.userinfo.id);
         await db.set("ram-" + req.session.userinfo.id, newram);
@@ -102,7 +98,7 @@ module.exports.load = async function(app, db) {
 
       let newusercoins = usercoins - cost;
       let newdisk = diskcap + amount;
-      if(newdisk > maxdisk) return res.send("You reached max disk limit!");
+
       if (newusercoins == 0) {
         await db.delete("coins-" + req.session.userinfo.id);
         await db.set("disk-" + req.session.userinfo.id, newdisk);
@@ -164,7 +160,7 @@ module.exports.load = async function(app, db) {
 
       let newusercoins = usercoins - cost;
       let newcpu = cpucap + amount;
-      if(newcpu > maxcpu) return res.send("Reached max CPU limit!");
+
       if (newusercoins == 0) {
         await db.delete("coins-" + req.session.userinfo.id);
         await db.set("cpu-" + req.session.userinfo.id, newcpu);
@@ -226,7 +222,7 @@ module.exports.load = async function(app, db) {
 
       let newusercoins = usercoins - cost;
       let newservers = serverscap + amount;
-      if(newservers > maxservers) return res.send("Reached max server limit!");
+
       if (newusercoins == 0) {
         await db.delete("coins-" + req.session.userinfo.id);
         await db.set("servers-" + req.session.userinfo.id, newservers);

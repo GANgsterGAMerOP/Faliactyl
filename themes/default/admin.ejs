@@ -52,33 +52,6 @@
               <h3 class="page-title"> Admin </h3>
             </div>
             <div class="row">
-              <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Heliactyl Version</h4>
-                    <form class="forms-sample">
-                      <div class="form-group">
-              <p id="latestversion"><span>Fetching...</span></p>
-                                    <script>
-                                        fetch("https://heliactyl.github.io/Heliactyl-11/")
-                                            .then(res => Promise.resolve(res.json()).then(ver => {
-                                                let currentver = "<%= settings.version.replace(/"/g, `\\\\"`) %>";
-                                                if (ver.version == currentver) {
-                                                    document.getElementById("latestversion").innerHTML = `<span>You are running Heliactyl version <code style="color: #009425" >${currentver}</code>. Heliactyl is up-to-date!</span>`;
-                                                } else if (ver.prerelease == currentver) {
-                                                    document.getElementById("latestversion").innerHTML = `<span>You are running Heliactyl version <code style="color: #009425">${currentver}</code>. Heliactyl is up-to-date!</span>`;
-                                                } else {
-                                                    document.getElementById("latestversion").innerHTML = `<span>Heliactyl is <b>not up-to-date!</b> The latest version is <codestyle="color: #009425" >${ver.version}</code> (or <codestyle="color: #009425" >${ver.prerelease}</code> for pre-releases) and you are currently running version <codestyle="color: #009425" ><%= settings.version %></code>.</span>`;
-                                                };
-                                            }));
-                                    </script>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div>
-            <div class="row">
               <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
