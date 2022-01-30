@@ -48,21 +48,23 @@
         "redeem": "redeem.ejs",
         "settings": "settings.ejs",
         "gift": "gift.ejs",
-        "join-for-resources": "join-for-rewards.ejs",
+        "join-for-resources": "join-for-resources.ejs",
         "coins": "coins.ejs",
         "store": "store.ejs",
         "privacy-policy": "privacy-policy.ejs",
-        "terms-of-service": "terms-of-service.ejs"
+        "terms-of-service": "terms-of-service.ejs",
+        "earn": "earn.ejs"
     },
     "mustbeloggedin": [
         "/dashboard",
         "/servers/new",
         "/servers/edit",
         "/settings",
-        "/join-for-rewards",
+        "/join-for-resources",
         "/gift",
         "/store",
-        "/coins"
+        "/coins",
+        "/earn"
     ],
     "mustbeadmin": [
         "/admin"

@@ -1,52 +1,92 @@
 {
-  "version": "2.0.0",
+  "version": "1.0.0",
+  "important-warning": "Everything must use https:// or Faliactyl will fail to start properly",
   "defaulttheme": "default",
+  "note": "Select your Faliactyl theme, Default Themes: BlackDashboard, MaterialDashboard",
+  "note2": "To make a custom theme for Faliactyl, create a folder inside /themes/ and change the value above",
   "website": {
-    "port": 8080,
-    "secret": "JNBYEVHBG*^@fo&y(x"
+    "port": 80,
+    "warning": "To run Faliactyl on a domain, you need to setup a reverse proxy, the guide is on our GitHub",
+    "secret": "Example Secret"
+  },
+  "guildblacklist": {
+    "note": "Stop users using your host if they are in a certain discord server",
+    "guilds": ["ServerID", "ServerID"]
   },
   "pterodactyl": {
-    "domain": "https://panel.foxynodes.net",
-    "key": "QOgl80UHpd1Q7vtF5dGBDxnLyZD2fkhvw3ebyOlmMZ7YOZXZ"
+    "domain": "Pterodactyl URL",
+    "note": "Don't put a / in the domain, only put for example https://panel.faliactyl.net or server link wont work",
+    "key": "Pterodactyl API Key"
+  },
+  "limits": {
+    "note": "This allows you to control the maximum amount of resources anyone can buy from the resources store.",
+    "ram": 1024,
+    "cpu": 200,
+    "servers": 4,
+    "disk": 5120
+  },
+  "ads": {
+    "enabled": false,
+    "note": "This allows you to put adsense, adsterra, etc easily into Faliactyl. Please check /themes/YourFaliactylTheme/components/ads.ejs"
+  },
+  "lv": {
+    "note": "This is linkvertise earning, make account at https://publisher.linkvertise.com and then go to full script api and put user ID below.",
+    "note2": "Replace client.google.com with your Dashboard URL",
+    "userid": 0,
+    "clienturl": "client.google.com"
   },
   "database": "sqlite://database.sqlite",
   "api": {
     "client": {
        "api": {
          "enabled": true,
-         "code": "JNBYEVHBG*^@fo&y(x"
+         "code": "Example API Code"
        },
        "j4r": {
          "enabled": true,
-         "servers": ["928271700804653098", "933803406513012807"],
+         "note": "The bot must be in these servers.",
+         "servers": ["ServerID", "ServerID"],
          "every": {
-             "cpu": 25,
+             "cpu": 10,
              "ram": 512,
              "disk": 512,
              "servers": 0
          },
          "ads": [
              {
-             	"name": "FoxyNetwork",
-                "invite": "https://discord.gg/bZEybPXCga"
+             	"name": "Example server",
+                "invite": "https://discord.gg/Tz2bkhk5Pn",
+                "note": "Enter your server invite link and server name for J4R"
          	 },
              {
-                 "name": "Faliactyl Devlopment",
-                 "invite": "https://discord.gg/RTHmnwzEpu"
+                 "name": "Example server",
+                 "invite": "https://discord.gg/vSm7FGUXRf"
          	 }
          ]
        },
        "bot": {
-         "token": "OTMwNjExNDc5NzU2MDM0MTA4.Yd4Zeg.Xc_yd9wuQY43TX_deDHbzgjAub4",
-         "joinguild": {
-          "enabled": true,
-          "guildid": ["913504179459330068"],
-          "forcejoin": true,
-          "registeredrole": 924454386653077594
+        "token": "bot token",
+        "joinguild": {
+          "_comment": "The Discord bot must be in these servers and have invite permissions.",
+          "enabled": false,
+          "guildid": ["guild id", "another guild id"],
+          "forcejoin": false,
+          "registeredrole": null
+        }
+      },
+      "webhook": {
+        "_comment": "URL of the webhook to send messages to.",
+        "webhook_url": "",
+        "auditlogs": {
+          "_comment": "This feature allows you to log actions, and get an overview of a users actions.",
+          "enabled": false,
+          "_comment2": "The types of notifications disabled. Values: ADMIN, LOGIN, SERVER, COUPONREDEEM",
+          "disabled": []
         }
       },
       "passwordgenerator": {
         "signup": true,
+        "note": "Use this to disable signups",
         "length": 8
       },
       "allow": {
@@ -57,18 +97,20 @@
           "modify": true,
           "delete": true
         },
-        "overresourcessuspend": true,
+        "overresourcessuspend": false,
         "renewsuspendsystem": {
-          "enabled": true,
-          "time": 1814400,
-          "cost": 800
+          "_comment": "This feature requires a restart in order to work. Also, this requires every server to start suspended, or else this feature would not work for some servers.",
+          "enabled": false,
+          "time": 3600,
+          "cost": 0
         }
       },
       "oauth2": {
         "_comment": "Go to https://discord.dev/ and create an application to set these up.",
-        "id": "930611479756034108",
-        "secret": "UkLoB-GamYZ2t-IGu-GdTggkXa24tI1u",
-        "link": "https://test.foxynodes.net",
+        "id": "discord oauth2 application id",
+        "secret": "discord oauth2 application secret",
+        "link": "discord oauth2 application link without the '/callback'",
+        "note": "Create a redirect link with your dashboard URL and /callback, Example: https://test.faliactyl.net/callback",
         "callbackpath": "/callback",
         "prompt": true,
 
@@ -95,341 +137,76 @@
         "list": {
           "default": {
             "ram": 1024,
-            "disk": 2048,
-            "cpu": 50,
+            "disk": 1024,
+            "cpu": 100,
             "servers": 1
           }
         }
       },
-"locations": {
+      "locations": {
         "1": {
-          "name": "Germany",
-          "package": null
-		},
-		"6": {
-          "name": "India",
+          "name": "Example Location 1",
+
+          "_comment": "Make 'package' be null to allow anyone with enough resources in their plan to create a server with this location. Also, make the 'package' variable an array, like [], with the location names with quotes to make a user be required to have a plan in order to use the package.",
           "package": null
         },
-	    "3": {
-          "name": "Singapore",
+        "2": {
+          "name": "Example Location 2",
+
+          "_comment": "Make 'package' be null to allow anyone with enough resources in their plan to create a server with this location. Also, make the 'package' variable an array, like [], with the location names with quotes to make a user be required to have a plan in order to use the package.",
           "package": null
-        },
-	    "7": {
-          "name": "United Kingdom",
-          "package": null
-        },
-            "10": {
-            "name": "United States",
-            "package": null
         }
       },
       "eggs": {
-        "JavaVanilla": {
-          "display": "Minecraft Java │ Vanilla",
+       "paper": {
+          "display": "Minecraft Java",
           "minimum": {
-            "ram": 512,
-            "disk": 512,
-            "cpu": 50
+            "ram": 1024,
+            "disk": 1024,
+            "cpu": 100
           },
           "maximum": {
-            "ram": 5120,
-            "disk": 15360,
-            "cpu": 200
+            "ram": null,
+            "disk": null,
+            "cpu": null
           },
           "info": {
-            "egg": 29,
-            "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
-            "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}",
-            "environment": {
-              "SERVER_JARFILE": "server.jar",
-              "VANILLA_VERSION": "latest"
-            },
-            "feature_limits": {
-              "databases": 2,
-              "backups": 2
-            }
-          }
-        },
-        "JavaPaper": {
-          "display": "Minecraft Java │ Paper",
-          "minimum": {
-            "ram": 512,
-            "disk": 512,
-            "cpu": 50
-          },
-          "maximum": {
-            "ram": 5120,
-            "disk": 15360,
-            "cpu": 200
-          },
-          "info": {
-            "egg": 31,
+            "egg": 3,
             "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
             "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
             "environment": {
-              "MINECRAFT_VERSION": "latest",
               "SERVER_JARFILE": "server.jar",
-              "DL_PATH": "",
               "BUILD_NUMBER": "latest"
             },
             "feature_limits": {
-              "databases": 2,
-              "backups": 2
+              "databases": 4,
+              "backups": 4
             }
           }
         },
-        "JavaForge": {
-          "display": "Minecraft Java │ Forge",
+        "bungeecord": {
+          "display": "Minecraft BungeeCord",
           "minimum": {
             "ram": 512,
             "disk": 512,
-            "cpu": 50
+            "cpu": 75
           },
           "maximum": {
-            "ram": 5120,
-            "disk": 15360,
-            "cpu": 200
+            "ram": null,
+            "disk": null,
+            "cpu": null
           },
           "info": {
-            "egg": 28,
-            "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
-            "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
-            "environment": {
-              "SERVER_JARFILE": "server.jar",
-              "MC_VERSION": "latest",
-              "BUILD_TYPE": "recommended",
-              "FORGE_VERSION": ""
-            },
-            "feature_limits": {
-              "databases": 2,
-              "backups": 2
-            }
-          }
-        },
-        "JavaAirplane": {
-          "display": "Minecraft Java │ Airplane",
-          "minimum": {
-            "ram": 512,
-            "disk": 512,
-            "cpu": 50
-          },
-          "maximum": {
-            "ram": 5120,
-            "disk": 15360,
-            "cpu": 200
-          },
-          "info": {
-            "egg": 26,
-            "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
-            "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
-            "environment": {
-              "SERVER_JARFILE": "server.jar",
-              "VER": "1.17",
-              "BUILDVERSION": "latest"
-            },
-            "feature_limits": {
-              "databases": 2,
-              "backups": 2
-            }
-          }
-        },
-        "Flamecord": {
-          "display": "Minecraft Java │ Flamecord",
-          "minimum": {
-            "ram": 512,
-            "disk": 512,
-            "cpu": 50
-          },
-          "maximum": {
-            "ram": 5120,
-            "disk": 15360,
-            "cpu": 200
-          },
-          "info": {
-            "egg": 33,
-            "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
-            "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
-            "environment": {
-              "FLAMECORD_VERSION": "latest",
-              "SERVER_JARFILE": "server.jar"
-            },
-            "feature_limits": {
-              "databases": 2,
-              "backups": 2
-            }
-          }
-        },
-        "BedrockVanilla": {
-          "display": "Minecraft Bedrock │ Vanilla",
-          "minimum": {
-            "ram": 512,
-            "disk": 512,
-            "cpu": 50
-          },
-          "maximum": {
-            "ram": 5120,
-            "disk": 15360,
-            "cpu": 200
-          },
-          "info": {
-            "egg": 27,
-            "docker_image": "quay.io/parkervcp/pterodactyl-images:base_debian",
-            "startup": "./bedrock_server",
-            "environment": {
-              "BEDROCK_VERSION": "latest",
-              "LD_LIBRARY_PATH": ".",
-              "SERVERNAME": "Bedrock Dedicated Server",
-              "GAMEMODE": "survival",
-              "DIFFICULTY": "easy",
-              "CHEATS": "false"
-            },
-            "feature_limits": {
-              "databases": 2,
-              "backups": 2
-            }
-          }
-        },
-        "BedrockPocketMine": {
-          "display": "Minecraft Bedrock │ Pocketmine",
-          "minimum": {
-            "ram": 512,
-            "disk": 512,
-            "cpu": 50
-          },
-          "maximum": {
-            "ram": 5120,
-            "disk": 15360,
-            "cpu": 200
-          },
-          "info": {
-            "egg": 32,
-            "docker_image": "ghcr.io/parkervcp/yolks:debian",
-            "startup": "./bin/php7/bin/php ./PocketMine-MP.phar --no-wizard --disable-ansi",
-            "environment": {
-              "VERSION": "pm4"
-            },
-            "feature_limits": {
-              "databases": 2,
-              "backups": 2
-            }
-          }
-        },
-        "BedrockNukkit": {
-          "display": "Minecraft Bedrock │ Nukkit",
-          "minimum": {
-            "ram": 512,
-            "disk": 512,
-            "cpu": 50
-          },
-          "maximum": {
-            "ram": 5120,
-            "disk": 15360,
-            "cpu": 200
-          },
-          "info": {
-            "egg": 30,
+            "egg": 1,
             "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
             "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}",
             "environment": {
-              "SERVER_JARFILE": "server.jar",
-              "DL_PATH": "",
-              "NUKKIT_VERSION": "latest"
+              "SERVER_JARFILE": "bungeecord.jar",
+              "BUNGEE_VERSION": "latest"
             },
             "feature_limits": {
-              "databases": 2,
-              "backups": 2
-            }
-          }
-        },
-        "WaterDogPE": {
-          "display": "Minecraft Bedrock │ WaterDogPE",
-          "minimum": {
-            "ram": 512,
-            "disk": 512,
-            "cpu": 50
-          },
-          "maximum": {
-            "ram": 5120,
-            "disk": 15360,
-            "cpu": 200
-          },
-          "info": {
-            "egg": 37,
-            "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
-            "startup": "java -Dterminal.ansi=true -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}",
-            "environment": {
-              "WATERDOG_VERSION": "latest",
-              "SERVER_JARFILE": "server.jar"
-            },
-            "feature_limits": {
-              "databases": 2,
-              "backups": 2
-            }
-          }
-        },
-        "NodeJS": {
-          "display": "Discord Bot │ NodeJS",
-          "minimum": {
-            "ram": 512,
-            "disk": 512,
-            "cpu": 50
-          },
-          "maximum": {
-            "ram": 5120,
-            "disk": 15360,
-            "cpu": 200
-          },
-          "info": {
-            "egg": 36,
-            "docker_image": "ghcr.io/parkervcp/yolks:nodejs_17",
-            "startup": "if [[ -d .git ]]; then git pull; fi; if [[ ! -z ${NODE_PACKAGES} ]]; then /usr/local/bin/npm install ${NODE_PACKAGES}; fi; if [[ ! -z ${UNNODE_PACKAGES} ]]; then /usr/local/bin/npm uninstall ${UNNODE_PACKAGES}; fi; if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/{{BOT_JS_FILE}}",
-            "environment": {
-              "GIT_ADDRESS": "https://github.com/RianOP/DiscordBots-FoxyNodes",
-              "BRANCH": "",
-              "USER_UPLOAD": "0",
-              "AUTO_UPDATE": "0",
-              "BOT_JS_FILE": "index.js",
-              "NODE_PACKAGES": "",
-              "USERNAME": "",
-              "ACCESS_TOKEN": "",
-              "UNNODE_PACKAGES": ""
-            },
-            "feature_limits": {
-              "databases": 2,
-              "backups": 2
-            }
-          }
-        },
-        "Python": {
-          "display": "Discord Bot │ Python",
-          "minimum": {
-            "ram": 512,
-            "disk": 512,
-            "cpu": 50
-          },
-          "maximum": {
-            "ram": 5120,
-            "disk": 15360,
-            "cpu": 200
-          },
-          "info": {
-            "egg": 35,
-            "docker_image": "ghcr.io/parkervcp/yolks:python_3.10",
-            "startup": "if [[ -d .git ]]; then git pull; fi; if [[ ! -z {{PY_PACKAGES}} ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{BOT_PY_FILE}}",
-            "environment": {
-              "GIT_ADDRESS": "https://github.com/RianOP/DiscordBots-FoxyNodes",
-              "BRANCH": "",
-              "USER_UPLOAD": "0",
-              "AUTO_UPDATE": "0",
-              "BOT_PY_FILE": "bot.py",
-              "PY_PACKAGES": "",
-              "USERNAME": "",
-              "ACCESS_TOKEN": "",
-              "REQUIREMENTS_FILE": "requirements.txt"
-            },
-            "feature_limits": {
-              "databases": 2,
-              "backups": 2
+              "databases": 4,
+              "backups": 4
             }
           }
         }
@@ -460,12 +237,12 @@
     },
     "arcio": {	
       "_comment": "You can make an arc.io widget on https://arc.io. You can get money using arc.io.",	
-      "enabled": true,	
-      "widgetid": "3GvhQ6Du",	
+      "enabled": false,	
+      "widgetid": "Arc Widget ID",	
       "afk page": {	
         "_comment": "This will not effect any current arc.io sessions, and will require a restart to kick everyone out of the websocket sesison.",	
         "_comment2": "Make sure coins are enabled if you choose to enable this option!",	
-        "enabled": true,	
+        "enabled": false,	
         "_comment3": "If you change the path, you need to restart for it to take full effect.",	
         "path": "afkwspath",	
         "_comment4": "This afk page will give the users [coins variable] coins every [every variable] seconds.",	
