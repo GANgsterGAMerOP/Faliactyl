@@ -4,7 +4,7 @@
     "redirect": {
         "callback": "/dashboard",
         "logout": "/",
-       	"createserver": "/dashboard",
+        "createserver": "/dashboard",
         "deleteserver": "/dashboard",
         "updateservers": "/dashboard",
         "failedcreateserver": "/servers/new",
@@ -19,7 +19,7 @@
         "failedsetresources": "/admin",
         "giftresources": "/gift",
         "failedgiftresources": "/gift",
-        "renewserver": "/servers",	
+        "renewserver": "/dashboard",	
         "setcoins": "/admin",	
         "failedsetcoins": "/admin",	
         "purchaseram": "/store",	
@@ -38,8 +38,7 @@
         "couponrevokefailed": "/admin",
         "couponrevokesuccess": "/admin",
         "removeaccountfailed": "/admin",
-        "removeaccountsuccess": "/admin"
-    },
+        "removeaccountsuccess": "/admin"    },
     "pages": {
         "dashboard": "dashboard.ejs",
         "servers/new": "create.ejs",
@@ -53,7 +52,8 @@
         "store": "store.ejs",
         "privacy-policy": "privacy-policy.ejs",
         "terms-of-service": "terms-of-service.ejs",
-        "earn": "earn.ejs"
+        "earn": "earn.ejs",
+        "lv": "lv.ejs"
     },
     "mustbeloggedin": [
         "/dashboard",
@@ -64,7 +64,8 @@
         "/gift",
         "/store",
         "/coins",
-        "/earn"
+        "/earn",
+        "/lv"
     ],
     "mustbeadmin": [
         "/admin"
