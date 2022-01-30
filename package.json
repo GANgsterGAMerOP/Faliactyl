@@ -1,9 +1,9 @@
 {
-  "name": "FoxyNodes",
-  "version": "2.0.0",
-  "description": "The best Host Ever!",
+  "name": "Faliactyl",
+  "version": "1.0.0",
+  "description": "The best dashboard ever!",
   "main": "index.js",
-  "author": "FoxyNodes-tm",
+  "author": "Faliactyl-tm",
   "dependencies": {
     "@keyv/mongo": "^1.2.1",
     "@keyv/mysql": "^1.1.5",
