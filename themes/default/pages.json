@@ -52,8 +52,7 @@
         "store": "store.ejs",
         "privacy-policy": "privacy-policy.ejs",
         "terms-of-service": "terms-of-service.ejs",
-        "earn": "earn.ejs",
-        "lv": "lv.ejs"
+        "earn": "earn.ejs"
     },
     "mustbeloggedin": [
         "/dashboard",
@@ -64,8 +63,7 @@
         "/gift",
         "/store",
         "/coins",
-        "/earn",
-        "/lv"
+        "/earn"
     ],
     "mustbeadmin": [
         "/admin"
