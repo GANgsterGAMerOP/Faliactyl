@@ -20,7 +20,6 @@
                 <div class="col-md-12 grid-margin stretch-card">
                                     <div class="card">
                     <div class="card-body">
-                                  <p> By being on this page, you are supporting the service stay up & running while also earning coins </p>
                                   <p>Every <% if (settings.api.arcio["afk page"].every !== 1) { %><%= settings.api.arcio["afk page"].every %> seconds<% } else { %>second<% } %>, you will get <%= settings.api.arcio["afk page"].coins == 1 ? "a" : settings.api.arcio["afk page"].coins %> coin<%= settings.api.arcio["afk page"].coins == 1 ? "" : "s" %>.</p>
                 <p>You will gain coins again in <span id="arciotimer"><%= settings.api.arcio["afk page"].every %></span> seconds</p>
                        <p>You have gained <span id="arciogainedcoins">0</span> coins this AFK session</p>

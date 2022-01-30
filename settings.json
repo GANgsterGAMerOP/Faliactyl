@@ -6,7 +6,7 @@
     "secret": "JNBYEVHBG*^@fo&y(x"
   },
   "pterodactyl": {
-    "domain": "https://client.foxynodes.net",
+    "domain": "https://panel.foxynodes.net",
     "key": "QOgl80UHpd1Q7vtF5dGBDxnLyZD2fkhvw3ebyOlmMZ7YOZXZ"
   },
   "database": "sqlite://database.sqlite",
@@ -37,7 +37,7 @@
          ]
        },
        "bot": {
-         "token": "OTMwNjExNDc5NzU2MDM0MTA4.Yd4Zeg.a4gjM2guTxmcOdhly3jRbpPzoTQ",
+         "token": "OTMwNjExNDc5NzU2MDM0MTA4.Yd4Zeg.Xc_yd9wuQY43TX_deDHbzgjAub4",
          "joinguild": {
           "enabled": true,
           "guildid": ["913504179459330068"],
@@ -99,6 +99,28 @@
             "cpu": 50,
             "servers": 1
           }
+        }
+      },
+"locations": {
+        "1": {
+          "name": "Germany",
+          "package": null
+		},
+		"6": {
+          "name": "India",
+          "package": null
+        },
+	    "3": {
+          "name": "Singapore",
+          "package": null
+        },
+	    "7": {
+          "name": "United Kingdom",
+          "package": null
+        },
+            "10": {
+            "name": "United States",
+            "package": null
         }
       },
       "eggs": {

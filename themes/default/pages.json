@@ -48,7 +48,7 @@
         "redeem": "redeem.ejs",
         "settings": "settings.ejs",
         "gift": "gift.ejs",
-        "join-for-rewards": "join-for-rewards.ejs",
+        "join-for-resources": "join-for-rewards.ejs",
         "coins": "coins.ejs",
         "store": "store.ejs",
         "privacy-policy": "privacy-policy.ejs",
