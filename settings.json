@@ -29,12 +29,6 @@
     "enabled": false,
     "note": "This allows you to put adsense, adsterra, etc easily into Faliactyl. Please check /themes/YourFaliactylTheme/components/ads.ejs"
   },
-  "lv": {
-    "note": "This is linkvertise earning, make account at https://publisher.linkvertise.com and then go to full script api and put user ID below.",
-    "note2": "Replace client.google.com with your Dashboard URL",
-    "userid": 0,
-    "clienturl": "client.google.com"
-  },
   "database": "sqlite://database.sqlite",
   "api": {
     "client": {
@@ -43,8 +37,7 @@
          "code": "Example API Code"
        },
        "j4r": {
-         "enabled": true,
-         "note": "The bot must be in these servers.",
+         "enabled": false,
          "servers": ["ServerID", "ServerID"],
          "every": {
              "cpu": 10,
@@ -55,12 +48,12 @@
          "ads": [
              {
              	"name": "Example server",
-                "invite": "https://discord.gg/Tz2bkhk5Pn",
+                "invite": "https://discord.gg/RTHmnwzEpu",
                 "note": "Enter your server invite link and server name for J4R"
          	 },
              {
                  "name": "Example server",
-                 "invite": "https://discord.gg/vSm7FGUXRf"
+                 "invite": "https://discord.gg/RTHmnwzEpu"
          	 }
          ]
        },
@@ -70,18 +63,6 @@
           "_comment": "The Discord bot must be in these servers and have invite permissions.",
           "enabled": false,
           "guildid": ["guild id", "another guild id"],
-          "forcejoin": false,
-          "registeredrole": null
-        }
-      },
-      "webhook": {
-        "_comment": "URL of the webhook to send messages to.",
-        "webhook_url": "",
-        "auditlogs": {
-          "_comment": "This feature allows you to log actions, and get an overview of a users actions.",
-          "enabled": false,
-          "_comment2": "The types of notifications disabled. Values: ADMIN, LOGIN, SERVER, COUPONREDEEM",
-          "disabled": []
         }
       },
       "passwordgenerator": {

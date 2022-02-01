@@ -6,12 +6,12 @@ const fs = require("fs");
 const fetch = require('node-fetch');
 const chalk = require("chalk");
 const arciotext = require("./api/arcio.js").text;
-console.log(chalk.green("[faliactyl] Files loaded..."));
+console.log(chalk.green("[Faliactyl] Files loaded..."));
 
 // Load settings.
 
 const settings = require("./settings.json");
-console.log(chalk.green("[faliactyl] Settings loaded..."));
+console.log(chalk.green("[Faliactyl] Settings loaded..."));
 
 const defaultthemesettings = {
   index: "index.ejs",
@@ -83,7 +83,7 @@ module.exports.db = db;
 const express = require("express");
 const app = express();
 const expressWs = require('express-ws')(app);
-console.log(chalk.green("[faliactyl] Pages loaded..."));
+console.log(chalk.green("[Faliactyl] Pages loaded..."));
 
 // Load express addons.
 
@@ -107,11 +107,11 @@ app.use(express.json({
 }));
 
 const listener = app.listen(settings.website.port, function() {
-  console.log(chalk.green("[faliactyl] Checking for updates..."));
+  console.log(chalk.green("[Faliactyl] Checking for updates..."));
   // no update system yet, soontm
-  console.log(chalk.green("[faliactyl] Finishing & deploying faliactyl..."));
+  console.log(chalk.green("[Faliactyl] Finishing & deploying faliactyl..."));
   console.log(chalk.green("----------------------------------------------------"));
-  console.log(chalk.green("faliactyl: v1"));
+  console.log(chalk.green("Faliactyl: v1"));
   console.log(chalk.green("Release: v1.0.0"));
   console.log(chalk.green("----------------------------------------------------"));
   console.log(chalk.green("Your dashboard will now be available on port " + listener.address().port + " "));
