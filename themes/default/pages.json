@@ -4,7 +4,7 @@
     "redirect": {
         "callback": "/dashboard",
         "logout": "/",
-        "createserver": "/dashboard",
+       	"createserver": "/dashboard",
         "deleteserver": "/dashboard",
         "updateservers": "/dashboard",
         "failedcreateserver": "/servers/new",
@@ -19,7 +19,7 @@
         "failedsetresources": "/admin",
         "giftresources": "/gift",
         "failedgiftresources": "/gift",
-        "renewserver": "/dashboard",	
+        "renewserver": "/servers",	
         "setcoins": "/admin",	
         "failedsetcoins": "/admin",	
         "purchaseram": "/store",	
@@ -38,7 +38,8 @@
         "couponrevokefailed": "/admin",
         "couponrevokesuccess": "/admin",
         "removeaccountfailed": "/admin",
-        "removeaccountsuccess": "/admin"    },
+        "removeaccountsuccess": "/admin"
+    },
     "pages": {
         "dashboard": "dashboard.ejs",
         "servers/new": "create.ejs",
@@ -70,10 +71,10 @@
     ],
     "variables": {
         "footerad": true,
-        "faviconlink": "https://i.imgur.com/Bz2hWKW.png",
+        "faviconlink": "https://i.imgur.com/Xnpq05I.jpg",
         "home": {
-            "title": "FoxyNodes",
-            "name": "FoxyNodes",
+            "title": "Faliactyl",
+            "name": "Faliactyl",
             "buttontext": {
                 "loggedin": {
                     "text": "Back to Dashboard",

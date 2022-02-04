@@ -63,6 +63,16 @@
           "_comment": "The Discord bot must be in these servers and have invite permissions.",
           "enabled": false,
           "guildid": ["guild id", "another guild id"],
+}
+      },
+      "webhook": {
+        "_comment": "URL of the webhook to send messages to.",
+        "webhook_url": "",
+        "auditlogs": {
+          "_comment": "This feature allows you to log actions, and get an overview of a users actions.",
+          "enabled": true,
+          "_comment2": "The types of notifications disabled. Values: ADMIN, LOGIN, SERVER, COUPONREDEEM",
+          "disabled": []
         }
       },
       "passwordgenerator": {

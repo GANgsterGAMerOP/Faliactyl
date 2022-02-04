@@ -12,40 +12,74 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            <div class="page-header">
-              <h3 class="page-title"> Earn Fali Coins </h3>
+                </div>
+                <div class="page-header">
+              <h3 class="page-title"> Earn Fali Coins <span id="balance"></span></h3>
             </div>
         <%- include('./components/ads') %>
             <div class="row">
-                <div class="col-md-6 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-description"> Afk Page <br>
-                        <h5 class="card-description"> Afk In The Website To Earn Every 1 Minute You Will Get 1 Fali Coin <br>
-                          <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="/coins">Afk Page</a>
-                           <br>
-            <div class="row">
               <div class="col-md-6 grid-margin stretch-card">
-                 <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-description"> Linkvertise <br>
-                        <h5 class="card-description"> Complete Linkvertise Links To Earn Fali Coins <br>
-                          <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="/lv">Linkvertise</a>
-                           <br>           
-            <div class="row">
-               <div class="col-md-6 grid-margin stretch-card">
-                 <div class="card">
-                   <div class="card-body">
-                     <p class="card-description"> J4R <br>
-                       <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="/join-for-resources">Join for Resouces</a>
-                        <br>
-                      </form>
-                    </div>
-                 </div>
-               </div>
-              <div>
-             </div>
-           </div>
+                <div class="card">
+                  <div class="card-body">
+                    <form class="forms-sample" action="/coins">
+                      <div class="form-group">
+                        <label style="font-weight: bold;">Afk Page</label><BR>
+                      </div>
+                      <button class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" type="submit">Afk Page</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <form class="forms-sample" action="/store">
+                      <div class="form-group">
+                        <label style="font-weight: bold;">Purchase Resources</label><BR>
+                      </div>
+                      <button class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" type="submit">Purchase Resources</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <form class="forms-sample" action="/join-for-resources">
+                      <div class="form-group">
+                        <label style="font-weight: bold;">Join for Resources</label><BR>
+                      </div>
+                      <button class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" type="submit">Join for Resources</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <form class="forms-sample" action="/gift">
+                      <div class="form-group">
+                        <label style="font-weight: bold;">Gift Resources</label><BR>
+                      </div>
+                      <button class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" type="submit">Gift Resources</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <form class="forms-sample" action="/redeem">
+                      <div class="form-group">
+                        <label style="font-weight: bold;">Redeem Coupon</label><BR>
+                      </div>
+                      <button class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" type="submit">Redeem Coupon</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- content-wrapper ends -->
           <%- include('./components/footer') %>
         </div>
@@ -54,8 +88,6 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    <!-- plugins:js -->
-    <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="/assets/vendors/select2/select2.min.js"></script>
     <script src="/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
