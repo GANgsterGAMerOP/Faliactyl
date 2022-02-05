@@ -16,13 +16,13 @@
             <div class="alert">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 							<% if (req.query.err == "MISSINGCOUPONCODE") { %>
-								You have not provided a coupon code.
+								You have not provided a coupon code Please Provide It.
 							<% } else if (req.query.err == "INVALIDCOUPONCODE") { %>
-								Invalid coupon code. Was it claimed already?
+								Invalid coupon code. It May Be Claimed Or Revoked
 							<% } else if (req.query.err == "SUCCESSCOUPONCODE") { %>
-								Success!
+								Successfully Redeemed Coupon!
 							<% } else { %>
-								Coupon failure.
+								.
 							<% } %>
 							</div>
 						<% } %>
