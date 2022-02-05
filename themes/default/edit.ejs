@@ -16,9 +16,9 @@
             <div class="alert">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 <% if (req.query.err == "MISSINGVARIABLE") { %>
-                    You have not filled out all of the server information.
+                    You have not filled out all of the server information please check and try again.
                 <% } else if (req.query.err == "ERRORONMODIFY") { %>
-                    There has been an error while attempting to modifying your server. Please alert an administrator to fix this problem.
+                    There has been an error while attempting to modifying your server Node Or Panel Maybe Down.
                 <% } else if (req.query.err == "MISSINGEGG") { %>
                     The server type for this server is not registered as a valid server type, therefore your server's RAM, disk and/or CPU could not be changed.
                 <% } else { %>
