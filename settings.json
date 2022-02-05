@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "important-warning": "Everything must use https:// or Faliactyl will fail to start properly",
+  "important-warning": "Everything must use https:// or Faliactyl will fail to start properly!",
   "defaulttheme": "default",
   "note": "Select your Faliactyl theme, Default Themes: BlackDashboard, MaterialDashboard",
   "note2": "To make a custom theme for Faliactyl, create a folder inside /themes/ and change the value above",
