@@ -24,7 +24,7 @@
             <div class="alert">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 <% if (req.session.newaccount) { %>
-                    FoxyNodes successfully created a new account for you.<br>
+                    Dashboard successfully created a new account for you.<br>
                 <% } %>
                 <% if (req.session.password) { %>
                     Your <% if (!req.session.newaccount) { %>new <% } %>password is <%= req.session.password %>! Make sure to keep this password in a safe place.
