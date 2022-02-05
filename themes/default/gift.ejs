@@ -20,21 +20,21 @@
                 <% } else if (req.query.err == "INVALIDID") { %>
                     You have provided a Discord user ID that does not exist, or has not signed up on the dashboard.
                 <% } else if (req.query.err == "RAMSIZE") { %>
-                    The RAM number cannot be less than 100 and must be above 999999999999999.
+                    The RAM number cannot be less than 100 and must not be above then 999999999999999.
                 <% } else if (req.query.err == "TOMUCHRAM") { %>
-                    You are gifting more RAM then you can gift!
+                    You are gifting more RAM then you can gift please check how much ram you are having!
                 <% } else if (req.query.err == "DISKSIZE") { %>
-                    The disk number cannot be less than 100 and must be above 999999999999999.
+                    The disk number cannot be less than 100 and must not be above then 999999999999999.
                 <% } else if (req.query.err == "TOMUCHDISK") { %>
-                    You are gifting more disk then you can gift!
+                    You are gifting more disk then you can gift please check how much disk you are having!
                 <% } else if (req.query.err == "CPUSIZE") { %>
-                    The CPU number cannot be less than 10 and must be above 999999999999999.
+                    The CPU number cannot be less than 10 and must not be above then 999999999999999.
                 <% } else if (req.query.err == "TOMUCHCPU") { %>
-                    You are gifting more CPU then you can gift!
+                    You are gifting more CPU then you can gift please check how much cpu you are having!
                 <% } else if (req.query.err == "SERVERSIZE") { %>
-                    The servers number cannot be less than 1 and must be above 999999999999999.
+                    The servers number cannot be less than 1 and must not be above then 999999999999999.
                 <% } else if (req.query.err == "TOMUCHSERVERS") { %>
-                    You are gifting more servers then you can gift!
+                    You are gifting more servers then you can gift please check how many server slots you are having!
                 <% } %>
               </div>
             <% } else if (req.query.err == "none") { %>
