@@ -16,15 +16,15 @@
             <div class="alert">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                 <% if (req.query.err == "MISSINGVARIABLE") { %>
-                    You have not filled out all of the server information.
+                    You have not filled out all of the server information please check and try again.
                 <% } else if (req.query.err == "NOTANUMBER") { %>
-                    RAM, disk and CPU must be a number.
+                    RAM, disk and CPU must be a number like 2048.
                 <% } else if (req.query.err == "ERRORONCREATE") { %>
-                    This location is full, please check if there are available locations before creating a server.
+                    This node is full, please check if there are available locations before creating a server.
                 <% } else if (req.query.err == "BIGSERVERNAME") { %>
                     Your server name must be less than <b>191</b> characters.
                 <% } else if (req.query.err == "TOOMUCHSERVERS") { %>
-                    Too many servers!
+                    Too many servers check your server limit before creating!
                 <% } else if (req.query.err == "PREMIUMLOCATION") { %>
                     Please select a location.
                 <% } else { %>
@@ -53,13 +53,13 @@
                             <% } else if (req.query.err == "EXCEEDRAM" || req.query.err == "EXCEEDDISK" || req.query.err == "EXCEEDCPU") { %>
                                 You don't have enough resources to make this server.
                             <% } else { %>
-                                I won't mind to add a little easter egg here. :)
+                                Server Creation Closed. :)
                             <% } %>
                         <% } else { %>
-                            I won't mind to add a little easter egg here. :)
+                            Nodes Full. :)
                         <% } %>
                     <% } else { %>
-                        I won't mind to add a little easter egg here. :)
+                        Node/Panel Is Down. :)
                     <% } %>
                 <% } %>
             </div>
