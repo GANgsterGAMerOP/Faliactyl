@@ -38,7 +38,8 @@
         "couponrevokefailed": "/admin",
         "couponrevokesuccess": "/admin",
         "removeaccountfailed": "/admin",
-        "removeaccountsuccess": "/admin"
+        "removeaccountsuccess": "/admin", 
+        "earncoins": "/earn"
     },
     "pages": {
         "dashboard": "dashboard.ejs",

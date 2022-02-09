@@ -8,7 +8,7 @@ const chalk = require("chalk");
 const arciotext = require("./api/arcio.js").text;
 console.log(chalk.green("[Faliactyl] Files loaded..."));
 
-// Load settings.
+// Load settings  from settings.json.
 
 const settings = require("./settings.json");
 console.log(chalk.green("[Faliactyl] Settings loaded..."));
