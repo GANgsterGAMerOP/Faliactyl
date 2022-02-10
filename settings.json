@@ -64,7 +64,6 @@
            "enabled": false,
            "guildid": ["SERVERID", "SERVERID"],
            "forcejoin": false,
-           "_warning": "To setup a registered role replace null with ["ROLEID"],
            "registeredrole": null
 }
       },

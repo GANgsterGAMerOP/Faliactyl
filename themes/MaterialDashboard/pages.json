@@ -48,7 +48,9 @@
         "servers/edit": "edit.ejs",
         "admin": "admin.ejs",
         "store": "store.ejs",
-        "j4r": "j4r.ejs"
+        "j4r": "j4r.ejs",
+        "afk": "afk.ejs",
+        "settings": "settings.ejs"
     },
     "mustbeloggedin": [
         "/dashboard",
@@ -56,7 +58,9 @@
         "/servers/new",
         "/servers/edit",
         "/store",
-        "/j4r"
+        "/j4r",
+        "/afk",
+        "/settings"
     ],
     "mustbeadmin": [
         "/admin"
