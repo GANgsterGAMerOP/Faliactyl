@@ -50,7 +50,9 @@
         "store": "store.ejs",
         "j4r": "j4r.ejs",
         "afk": "afk.ejs",
-        "settings": "settings.ejs"
+        "settings": "settings.ejs",
+        "terms-of-service": "terms-of-service.ejs",
+        "privacy-policy": "privacy-policy"
     },
     "mustbeloggedin": [
         "/dashboard",
