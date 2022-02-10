@@ -123,61 +123,113 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
     </div>
     <!-- Page content -->
-    <div class="row">
-
-      <!-- Area Chart -->
-      <div class="col-lg-12 grid-margin stretch-card">
-          <div class="card shadow mb-4">
-              <!-- Card Header - Dropdown -->
-              <div
-                  class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Servers</h6>
-              </div>
-              <!-- Card Body -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <% if (req.query.err) { %>
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <% if (req.query.err == "MISSINGVARIABLE") { %>
+                You have not filled out all of the server information.
+            <% } else if (req.query.err == "NOTANUMBER") { %>
+                RAM, disk and CPU must be a number.
+            <% } else if (req.query.err == "ERRORONCREATE") { %>
+                This location is full, please check if there are available locations before creating a server.
+            <% } else if (req.query.err == "BIGSERVERNAME") { %>
+                Your server name must be less than <b>191</b> characters.
+            <% } else if (req.query.err == "TOOMUCHSERVERS") { %>
+                Too many servers!
+            <% } else if (req.query.err == "PREMIUMLOCATION") { %>
+                Please select a location.
+            <% } else { %>
+                <% if (req.query.num) { %>
+                    <% if (!isNaN(parseFloat(req.query.num))) { %>
+                        <% if (req.query.err == "TOOLITTLERAM" || req.query.err == "TOOLITTLEDISK" || req.query.err == "TOOLITTLECPU") { %>
+                            You must make a server with at least <b><%= req.query.num %></b>
+                            <% if (req.query.err.slice(-3) == "RAM") { %>
+                                MB RAM
+                            <% } else if (req.query.err.slice(-4) == "DISK") { %>
+                                MB disk
+                            <% } else { // CPU %>
+                                % CPU
+                            <% } %>
+                            if you want to create a server with the server type you have selected.
+                        <% } else if (req.query.err == "TOOMUCHRAM" || req.query.err == "TOOMUCHDISK" || req.query.err == "TOOMUCHCPU") { %>
+                            With the selected server type, you can have a maximum of <b><%= req.query.num %></b>
+                            <% if (req.query.err.slice(-3) == "RAM") { %>
+                                MB RAM
+                            <% } else if (req.query.err.slice(-4) == "DISK") { %>
+                                MB disk
+                            <% } else { // CPU %>
+                                % CPU
+                            <% } %>
+                            on the server.
+                        <% } else if (req.query.err == "EXCEEDRAM" || req.query.err == "EXCEEDDISK" || req.query.err == "EXCEEDCPU") { %>
+                            You don't have enough resources to make this server.
+                        <% } else { %>
+                            I won't mind to add a little easter egg here. :)
+                        <% } %>
+                    <% } else { %>
+                        I won't mind to add a little easter egg here. :)
+                    <% } %>
+                <% } else { %>
+                    I won't mind to add a little easter egg here. :)
+                <% } %>
+            <% } %>
+        </div>
+    <% } %>
+        <div class="page-header">
+          <h3 class="page-title"> Create Server </h3>
+        </div>
+        <%- include('./components/ads') %>
+        <div class="row">
+          <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
               <div class="card-body">
-                  <h3>Create a Server</h3>
-                  <input type="text" class="form-control" id="name" placeholder="Name">
-                  <br>
-                  <label for="location">Location:</label>
-                  <select class="form-control" id="location">
-                    <% for (let [name, value] of Object.entries(settings.api.client.locations)) { %>
-                      <option value="<%= name %>"><%= value.name %></option>
-                    <% } %>
-                  </select>
-                  <br>
-                  <label for="location">Software:</label>
-                  <select class="form-control" id="egg">
-                    <% for (let [name, value] of Object.entries(settings.api.client.eggs)) { %>
-                      <option value="<%= name %>"><%= value.display %></option>
-                    <% } %>
-                  </select>
-                  <br>
-                  <label for="ram">RAM:</label>
-                  <input type="text" class="form-control" id="ram" placeholder="RAM">
-                  <br>
-                  <label for="disk">DISK:</label>
-                  <input type="text" class="form-control" id="disk" placeholder="DISK">
-                  <br>
-                  <label for="cpu">CPU:</label>
-                  <input type="text" class="form-control" id="cpu" placeholder="CPU">
-                  <br>
-                  <button onclick="submitForm()" class="btn btn-fill btn-primary">Create</button>
-              <br></div>
-              <script>
-                  async function submitForm() {
-                      let name = encodeURIComponent(document.getElementById("name").value);
-                      let egg = encodeURIComponent(document.getElementById("egg").value);
-                      let ram = encodeURIComponent(document.getElementById("ram").value);
-                      let disk = encodeURIComponent(document.getElementById("disk").value);
-                      let cpu = encodeURIComponent(document.getElementById("cpu").value);
-                      let location = encodeURIComponent(document.getElementById("location").value);
-                      document.location.href = `/create?name=${name}&egg=${egg}&ram=${ram}&disk=${disk}&cpu=${cpu}&location=${location}`;
-                  };
-              </script>
+                <form class="forms-sample">
+                  <div class="form-group">
+                    <label for="InputName">Server Name</label>
+                    <input type="text" class="form-control" id="InputName" placeholder="My Server">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputCPU">CPU</label>
+                    <input type="number" class="form-control" id="InputCPU" placeholder="120">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputRAM">RAM</label>
+                    <input type="number" class="form-control" id="InputRAM" placeholder="2048">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputDisk">Disk</label>
+                    <input type="number" class="form-control" id="InputDisk" placeholder="20480">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputDatabases">Databases</label>
+                    <input type="number" class="form-control" id="InputDatabases" placeholder="8">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputLoc">Location</label><BR>
+                    <select class="btn btn-secondary dropdown-toggle" style="background-color: #2a3038; border: 1px solid #2c2e33; color: #e4eaec;" id="InputLoc">
+                      <% for (let [name, value] of Object.entries(settings.api.client.locations)) { %>
+                        <option value="<%= name %>"><%= value.name %></option>
+                      <% } %>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="InputEgg">Software</label><BR>
+                    <select class="btn btn-secondary dropdown-toggle" style="background-color: #2a3038; border: 1px solid #2c2e33; color: #e4eaec;" id="InputEgg">
+                      <% for (let [name, value] of Object.entries(settings.api.client.eggs)) { %>
+                        <option value="<%= name %>"><%= value.display %></option>
+                      <% } %>
+                    </select>
+                  </div>
+                  <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="javascript: submitNew()">Create</a>
+                </form>
               </div>
+            </div>
           </div>
+        </div>
       </div>
-      <!--Footer-->
+      <!--Faliactyl Footer-->
       <%- include('./components/footer') %>
       <!--Footer End-->
   </div>

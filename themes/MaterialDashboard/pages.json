@@ -43,9 +43,7 @@
     },
     "pages": {
         "dashboard": "dashboard.ejs",
-        "servers": "servers.ejs",
         "servers/new": "create.ejs",
-        "servers/edit": "edit.ejs",
         "admin": "admin.ejs",
         "store": "store.ejs",
         "j4r": "j4r.ejs",
