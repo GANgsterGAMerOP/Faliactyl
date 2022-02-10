@@ -203,10 +203,6 @@ The above copyright notice and this permission notice shall be included in all c
                     <input type="number" class="form-control" id="InputDisk" placeholder="20480">
                   </div>
                   <div class="form-group">
-                    <label for="InputDatabases">Databases</label>
-                    <input type="number" class="form-control" id="InputDatabases" placeholder="8">
-                  </div>
-                  <div class="form-group">
                     <label for="InputLoc">Location</label><BR>
                     <select class="btn btn-secondary dropdown-toggle" style="background-color: #2a3038; border: 1px solid #2c2e33; color: #e4eaec;" id="InputLoc">
                       <% for (let [name, value] of Object.entries(settings.api.client.locations)) { %>
@@ -238,6 +234,17 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- Core -->
   <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    async function submitNew() {
+      let name = encodeURIComponent(document.getElementById("InputName").value);
+      let egg = encodeURIComponent(document.getElementById("InputEgg").value);
+      let ram = encodeURIComponent(document.getElementById("InputRAM").value);
+      let disk = encodeURIComponent(document.getElementById("InputDisk").value);
+      let cpu = encodeURIComponent(document.getElementById("InputCPU").value);
+      let location = encodeURIComponent(document.getElementById("InputLoc").value);
+      document.location.href = `/create?name=${name}&egg=${egg}&ram=${ram}&disk=${disk}&cpu=${cpu}&location=${location}`;
+    };
+  </script>
   <script src="assets/vendor/js-cookie/js.cookie.js"></script>
   <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
   <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
