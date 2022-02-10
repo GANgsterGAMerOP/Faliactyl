@@ -50,7 +50,9 @@
         "afk": "afk.ejs",
         "settings": "settings.ejs",
         "terms-of-service": "terms-of-service.ejs",
-        "privacy-policy": "privacy-policy.ejs"
+        "privacy-policy": "privacy-policy.ejs",
+        "redeem": "redeem.ejs",
+        "gift": "gift.ejs"
     },
     "mustbeloggedin": [
         "/dashboard",
@@ -60,7 +62,9 @@
         "/store",
         "/j4r",
         "/afk",
-        "/settings"
+        "/settings",
+        "/redeem",
+        "/gift"
     ],
     "mustbeadmin": [
         "/admin"

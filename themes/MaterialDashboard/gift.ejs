@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Join for Rewards</title>
+        <% if (settings.api.arcio.enabled == true) { %>
+            <script async src="https://arc.io/widget.min.js#<%= settings.api.arcio.widgetid %>"></script>
+        <% } %>
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
+</head>
+      <!-- Faliactyl Sidebar -->
+<%- include('./components/sidebar') %>
+      <!-- End Sidebar -->
+      <!-- Faliactyl Navbar -->
+      
+      
+      <%- include('./components/navbar') %>
+      <!-- End Navbar -->
+          <!-- values -->
+          <%
+          let ram = 0;
+          let disk = 0;
+          let cpu = 0;
+          let servers = pterodactyl.relationships.servers.data.length;
+          for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) {
+              ram = ram + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.memory == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.memory : 0);
+              disk = disk + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.disk == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.disk : 0);
+              cpu = cpu + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.cpu == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.cpu : 0);
+          }
+      %>
+      
+      <!--Faliactyl Ad System-->
+      <%- include('./components/ads') %>       
+      <!--End Ad System-->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">content_copy</i>
+                  </div>
+                  <p class="card-category">Storage</p>
+                  <h3 class="card-title"<code><%= disk %>MB</code> /<%= (packages ? packages.disk : 0) + extraresources.disk %>MB</code>
+                  </h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">store</i>
+                  </div>
+                  <p class="card-category">Ram</p>
+                  <h3 class="card-title"><%= ram %>MB / <%= (packages ? packages.ram : 0) + extraresources.ram %>MB</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">info_outline</i>
+                  </div>
+                  <p class="card-category">CPU</p>
+                  <h3 class="card-title"><%= cpu %>% / <%= (packages ? packages.cpu : 0) + extraresources.cpu %>%</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                  <div class="card-icon">
+                    <i class="fa fa-twitter"></i>
+                  </div>
+                  <p class="card-category">Servers</p>
+                  <h3 class="card-title"><%= servers %> server<%= servers == 1 ? "" : "s" %> / <%= (packages ? packages.servers : 0) + extraresources.servers %> server<%= (packages ? packages.servers : 0) + extraresources.servers == 1 ? "" : "s" %></h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <% if (req.query.err) { %>
+              <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <% if (req.query.err == "MISSINGID") { %>
+                    You have not provided the Discord user ID.
+                <% } else if (req.query.err == "INVALIDID") { %>
+                    You have provided a Discord user ID that does not exist, or has not signed up on the dashboard.
+                <% } else if (req.query.err == "RAMSIZE") { %>
+                    The RAM number cannot be less than 100 and must be above 999999999999999.
+                <% } else if (req.query.err == "TOMUCHRAM") { %>
+                    You are gifting more RAM then you can gift!
+                <% } else if (req.query.err == "DISKSIZE") { %>
+                    The disk number cannot be less than 100 and must be above 999999999999999.
+                <% } else if (req.query.err == "TOMUCHDISK") { %>
+                    You are gifting more disk then you can gift!
+                <% } else if (req.query.err == "CPUSIZE") { %>
+                    The CPU number cannot be less than 10 and must be above 999999999999999.
+                <% } else if (req.query.err == "TOMUCHCPU") { %>
+                    You are gifting more CPU then you can gift!
+                <% } else if (req.query.err == "SERVERSIZE") { %>
+                    The servers number cannot be less than 1 and must be above 999999999999999.
+                <% } else if (req.query.err == "TOMUCHSERVERS") { %>
+                    You are gifting more servers then you can gift!
+                <% } %>
+              </div>
+            <% } else if (req.query.err == "none") { %>
+              <div class="alert" style="background-color: #00d415;">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                Success!
+              </div>
+            <% } %>
+            </div>
+                   <%- include('./components/ads') %>
+            <div class="row">
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <form class="forms-sample">
+                      <div class="form-group">
+                        <label for="InputID">Discord ID</label>
+                        <input type="number" class="form-control" id="InputID" placeholder="Enter ID here">
+                      </div>
+                      <div class="form-group">
+                        <label for="InputCPU">CPU</label>
+                        <input type="number" class="form-control" id="InputCPU" placeholder="10">
+                      </div>
+                      <div class="form-group">
+                        <label for="InputRAM">RAM</label>
+                        <input type="number" class="form-control" id="InputRAM" placeholder="100">
+                      </div>
+                      <div class="form-group">
+                        <label for="InputDisk">Disk</label>
+                        <input type="number" class="form-control" id="InputDisk" placeholder="100">
+                      </div>
+                      <div class="form-group">
+                        <label for="InputDisk">Servers</label>
+                        <input type="number" class="form-control" id="InputServers" placeholder="2">
+                      </div>
+                     <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="javascript: submitGift()">Gift</a>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <%- include('./components/footer') %>
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- Plugin js for this page -->
+    <script src="/assets/vendors/select2/select2.min.js"></script>
+    <script src="/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <script>
+      async function submitGift() {
+        let id = encodeURIComponent(document.getElementById("InputID").value);
+        let ram = encodeURIComponent(document.getElementById("InputRAM").value);
+        let disk = encodeURIComponent(document.getElementById("InputDisk").value);
+        let cpu = encodeURIComponent(document.getElementById("InputCPU").value);
+        let servers = encodeURIComponent(document.getElementById("InputServers").value);
+        document.location.href = `/giftres?id=${id}&ram=${ram}&disk=${disk}&cpu=${cpu}&servers=${servers}`;
+      };
+    </script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <%- include('./components/scripts') %>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../assets/js/core/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!-- Plugin for the momentJs  -->
+  <script src="../assets/js/plugins/moment.min.js"></script>
+  <!--  Plugin for Sweet Alert -->
+  <script src="../assets/js/plugins/sweetalert2.js"></script>
+  <!-- Forms Validations Plugin -->
+  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
+  <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+  <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+  <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+  <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+  <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
+  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+  <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+  <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+  <script src="../assets/js/plugins/fullcalendar.min.js"></script>
+  <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+  <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="../assets/js/plugins/nouislider.min.js"></script>
+  <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  <!-- Library for adding dinamically elements -->
+  <script src="../assets/js/plugins/arrive.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chartist JS -->
+  <script src="../assets/js/plugins/chartist.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+  <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+  <script src="../assets/demo/demo.js"></script>
+
+  </script>
+</body>
+
+</html>
