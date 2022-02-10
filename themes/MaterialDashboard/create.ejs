@@ -145,7 +145,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <% } %>
                   </select>
                   <br>
-                  <label for="location">Egg:</label>
+                  <label for="location">Software:</label>
                   <select class="form-control" id="egg">
                     <% for (let [name, value] of Object.entries(settings.api.client.eggs)) { %>
                       <option value="<%= name %>"><%= value.display %></option>
@@ -177,6 +177,9 @@ The above copyright notice and this permission notice shall be included in all c
               </div>
           </div>
       </div>
+      <!--Footer-->
+      <%- include('./components/footer') %>
+      <!--Footer End-->
   </div>
 
   <!-- Argon Scripts -->

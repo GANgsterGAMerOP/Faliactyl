@@ -1,14 +1,3 @@
-<!--
-=========================================================
-Material Dashboard - v2.1.2
-=========================================================
-
-Product Page: https://www.creative-tim.com/product/material-dashboard
-Copyright 2020 Creative Tim (https://www.creative-tim.com)
-Coded by Creative Tim
-
-=========================================================
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,124 +107,29 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
               </div>
             </div>
-          </div>     
-          <div class="row">
-            <div class="col-lg-6 col-md-12">
-              <div class="card">
-                <div class="card-header card-header-tabs card-header-primary">
-                  <div class="nav-tabs-navigation">
-                    <div class="nav-tabs-wrapper">
-                      <span class="nav-tabs-title">Tasks:</span>
-                      <ul class="nav nav-tabs" data-tabs="tabs">
-                        <li class="nav-item">
-
-                          </a>
-                        </li>
-                        <li class="nav-item">
-
-                          </a>
-                        </li>
-                        <li class="nav-item">
-
-                          </a>
-                        </li>
-                      </ul>
+          </div>
+            <div class="row">
+              <% for (let i = 0, len = settings.api.client.j4r.ads.length; i < len; i++) { %>
+                <div class="col-md-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title"><%= settings.api.client.j4r.ads[i].name %></h4>
+                      <p class="card-description"> Join this server to receive: <br> <%= settings.api.client.j4r.every.cpu %>% CPU, <%= settings.api.client.j4r.every.ram %>MB RAM & <%= settings.api.client.j4r.every.disk / 1024 %>GB Disk </p>
+                      <form class="forms-sample">
+                        <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="<%= settings.api.client.j4r.ads[i].invite %>">Join Server</a>
+                        <br><br>
+                        <p>Faliactyl needs to check if you actually joined the server so you'll have to logout and login again, <a style="color: #009425" href="../logout">click here</a> to logout</p>
+                      </form>
                     </div>
                   </div>
                 </div>
-                <div class="card-body">
-                  <div class="tab-content">
-                    <div class="tab-pane active" id="profile">
-                      <table class="table">
-                        <tbody>
-                          <tr>
-                            <td>
-                              <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
-                                <div class="text-md-center text-xl-left">
-                                  <h6 class="text-muted mb-0">Username:</h6>
-                                  <p class="text-muted mb-0"><%= pterodactyl.username %></p>
-                                </div>
-                              </div>
-                              <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
-                                <div class="text-md-center text-xl-left">
-                                  <h6 class="text-muted mb-0">Email:</h6>
-                                  <p class="text-muted mb-0"><%= pterodactyl.email %></p>
-                                </div>
-                              </div>
-                                <div class="alert">
-                                    <span class="closebtn">&times;</span>
-                                    
-                                    <% if (req.session.password) { %>
-                                        Your <% if (!req.session.newaccount) { %>new <% } %>password is <code><%= req.session.password %></code>! Make sure to keep this password in a safe place.
-                                    <% } else { %>
-                                        Click Regenerate to Generate a new password
-                                    <% } %>
-                                </div>
-                              
-                              <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
-                                <div class="text-md-center text-xl-left">
-                                  <p class="text-muted mb-0"><a href="<%= settings.pterodactyl.domain %>">Panel Link</a></p>
-                                </div>
-                              </div>
-                              <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
-                                <div class="text-md-center text-xl-left">
-                                  <p class="text-muted mb-0"><p class="text-muted mb-0"><a a href="" onclick="window.location.replace('/updateinfo')">Update Information</a></p>
-                                </div>
-                              </div>
-                           
-                            </div>
-                          </div>
-                      </div>
-                                  </span>
-                                </label>
-                              </div>
-                            </td>
-
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-lg-6 col-md-12">
-              <div class="card">
-                <div class="card-header card-header-warning">
-                  <h4 class="card-title">Your Servers</h4>
-                </div>
-                <div class="card-body table-responsive">
-                  <table class="table table-hover">
-                    <thead class="text-warning">
-                      <th>Server Name</th>
-                      <th>Ram</th>
-                      <th>CPU</th>
-                      <th>Disk</th>
-                      <th>Manage</th>
-                    </thead>
-                    <% for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) { %>
-                    <tbody>
-                    <tr>
-                      <td><%= pterodactyl.relationships.servers.data[i].attributes.name.length > 15 ? pterodactyl.relationships.servers.data[i].attributes.name.slice(0, 12) + "..." : pterodactyl.relationships.servers.data[i].attributes.name %></td>
-                          <td><%= pterodactyl.relationships.servers.data[i].attributes.limits.memory %>MB</td>
-                          <td><%= pterodactyl.relationships.servers.data[i].attributes.limits.disk %>MB</td>
-                          <td><%= pterodactyl.relationships.servers.data[i].attributes.limits.cpu %>%</td>
-                          <td><a href="/servers/edit?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>">Edit</a>  |  <a href="/delete?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>">Delete</a></td>
-                      </tr>
-                    </tbody>
-                    <% } %>
-                  </table>
-                </div>
-              </div>
-              <!--Footer-->
-              <%- include('./components/footer') %>
-              <!--Footer End-->
+              <% } %>
             </div>
           </div>
-        </div>
-      </div>
-      
-  <!--   Core JS Files   -->
+          <!--Footer-->
+          <%- include('./components/footer') %>
+          <!--Footer End-->
+        <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap-material-design.min.js"></script>

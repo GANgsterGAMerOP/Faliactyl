@@ -58,11 +58,14 @@
          ]
        },
        "bot": {
-        "token": "bot token",
-        "joinguild": {
-          "_comment": "The Discord bot must be in these servers and have invite permissions.",
-          "enabled": false,
-          "guildid": ["SERVERID", "SERVERID"],
+         "token": "bot token",
+         "joinguild": {
+           "_comment": "The Discord bot must be in these servers and have invite permissions.",
+           "enabled": false,
+           "guildid": ["SERVERID", "SERVERID"],
+           "forcejoin": false,
+           "_warning": "To setup a registered role replace null with ["ROLEID"],
+           "registeredrole": null
 }
       },
       "webhook": {

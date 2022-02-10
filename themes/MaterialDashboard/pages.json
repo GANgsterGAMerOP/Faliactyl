@@ -47,14 +47,16 @@
         "servers/new": "create.ejs",
         "servers/edit": "edit.ejs",
         "admin": "admin.ejs",
-        "store": "store.ejs"
+        "store": "store.ejs",
+        "j4r": "j4r.ejs"
     },
     "mustbeloggedin": [
         "/dashboard",
         "/servers",
         "/servers/new",
         "/servers/edit",
-        "/store"
+        "/store",
+        "/j4r"
     ],
     "mustbeadmin": [
         "/admin"
