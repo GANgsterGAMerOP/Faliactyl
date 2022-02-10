@@ -52,7 +52,7 @@
         "afk": "afk.ejs",
         "settings": "settings.ejs",
         "terms-of-service": "terms-of-service.ejs",
-        "privacy-policy": "privacy-policy"
+        "privacy-policy": "privacy-policy.ejs"
     },
     "mustbeloggedin": [
         "/dashboard",
