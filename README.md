@@ -29,7 +29,7 @@ We cannot force you to keep the "Powered by Faliactyl" in the footer, but please
 # Install Guide (pt. 1)
 
 Warning: You need Pterodactyl already set up on a domain for Faliactyl to work
-1. Run `sudo apt update && sudo apt upgrade && sudo apt install git`
+1. Run `sudo apt update && sudo apt install git`
 2. Run `curl -fsSL https://deb.nodesource.com/setup_12.x | sudo bash - && apt install nodejs`
 2. Run `git clone https://github.com/Evolution-Development/Faliactyl.git && cd Faliactyl && npm install`
 3. Configure settings.json (specifically panel domain/apikey and discord auth settings for it to work)
