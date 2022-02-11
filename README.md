@@ -2,7 +2,7 @@
 
 <hr>
 
-# Heliactyl V1 • The best Pterodactyl client area
+# Faliactyl V1 • The best Pterodactyl client area
 Making a free or paid host and need a way for users to sign up, earn coins, manage servers? Try out Faliactyl.
 To get started, scroll down and follow the guide
 
