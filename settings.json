@@ -27,7 +27,8 @@
   },
   "ads": {
     "enabled": false,
-    "note": "This allows you to put adsense, adsterra, etc easily into Faliactyl. Please check /themes/YourFaliactylTheme/components/ads.ejs"
+    "note": "This allows you to put adsense, adsterra, etc easily into Faliactyl.",
+    "note2": "Paste your Adsense/Adsterra script in /themes/YourFaliactylTheme/Components/ads.ejs"
   },
   "database": "sqlite://database.sqlite",
   "api": {
